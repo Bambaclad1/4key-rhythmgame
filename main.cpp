@@ -10,9 +10,12 @@ int main()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			//checkt alle poll events in een aparte class
 			game.Management(window, event);
+			game.KeyboardHandler(window, event);
 		}
+			
+
+	
 	}
 	return 0;
 }
