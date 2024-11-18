@@ -12,6 +12,7 @@ int main()
 		{
 			game.Management(window, event);
 			game.KeyboardHandler(window, event);
+
 		}
 			
 
