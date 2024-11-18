@@ -15,7 +15,7 @@ void Game::Management(sf::Window& window, sf::Event& event)
 		window.close();
 
 	if (event.type == sf::Event::KeyPressed)
-		std::cout << "TEMP | Button Pressed!\n";
+		std::cout << "TEMP | Ik heb een button geklikt!\n";
 
 	if (event.type == sf::Event::Resized)
 		std::cout << "Resized, Width: " << event.size.width << " Height: " << event.size.height << "\n";
