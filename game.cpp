@@ -8,11 +8,11 @@ Game::Game()
 	KeyLane4 = sf::Keyboard::K;
 }
 
-void Game::Management(sf::Window& window, sf::Event& event)
+void Game::Management(sf::RenderWindow& MainWindow, sf::Event& event)
 {
 	// poll event loop in de main
 	if (event.type == sf::Event::Closed)
-		window.close();
+		MainWindow.close();
 
 	if (event.type == sf::Event::Resized)
 		std::cout << "Resized, Width: " << event.size.width << " Height: " << event.size.height << "\n";
@@ -23,9 +23,9 @@ void Game::Management(sf::Window& window, sf::Event& event)
 	if (event.type == sf::Event::GainedFocus)
 		std::cout << "window Gained focus.\n";
 }
-void Game::KeyboardHandler(sf::Window& window, sf::Event& event)
+void Game::KeyboardHandler(sf::RenderWindow& MainWindow, sf::Event& event)
 {
-	window.setKeyRepeatEnabled(false);
+	MainWindow.setKeyRepeatEnabled(false);
 
 	if (event.type == sf::Event::KeyPressed)
 	{

@@ -2,28 +2,28 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Game.h"
-#include "Loader.h"
+#include "Drawer.h"
 
 int main()
 {
 	Game game;
-	Loader loader;
+	Drawer drawer;
+	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG");
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "4key rhythm game - DEBUG");
-
-	loader.Preload();
-	while (window.isOpen())
+	drawer.Setup();
+	while (MainWindow.isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (MainWindow.pollEvent(event))
 		{
-			game.Management(window, event);
-			game.KeyboardHandler(window, event);
-
+			game.Management(MainWindow, event);
+			game.KeyboardHandler(MainWindow, event);
 		}
 			
+		MainWindow.clear(sf::Color::White);
+		drawer.Draw(MainWindow);
+		MainWindow.display();		
 
-	
 	}
 	return 0;
 }
