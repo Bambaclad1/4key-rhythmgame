@@ -10,12 +10,9 @@ Game::Game()
 
 void Game::Management(sf::Window& window, sf::Event& event)
 {
-	// Part of the poll event loop in main
+	// poll event loop in de main
 	if (event.type == sf::Event::Closed)
 		window.close();
-
-	if (event.type == sf::Event::KeyPressed)
-		std::cout << "TEMP | Ik heb een button geklikt!\n";
 
 	if (event.type == sf::Event::Resized)
 		std::cout << "Resized, Width: " << event.size.width << " Height: " << event.size.height << "\n";
@@ -28,23 +25,25 @@ void Game::Management(sf::Window& window, sf::Event& event)
 }
 void Game::KeyboardHandler(sf::Window& window, sf::Event& event)
 {
+	window.setKeyRepeatEnabled(false);
+
 	if (event.type == sf::Event::KeyPressed)
 	{
 		if (event.key.code == KeyLane1)
 		{
-			std::cout << "Pressed KeyLane1";
+			std::cout << "Pressed KeyLane1\n";
 		}
 		else if (event.key.code == KeyLane2)
 		{
-			std::cout << "Pressed KeyLane2";
+			std::cout << "Pressed KeyLane2\n";
 		}
 		else if (event.key.code == KeyLane3)
 		{
-			std::cout << "Pressed KeyLane3";
+			std::cout << "Pressed KeyLane3\n";
 		}
 		else if (event.key.code == KeyLane4)
 		{
-			std::cout << "Pressed KeyLane4";
+			std::cout << "Pressed KeyLane4\n";
 		}
 		
 	}
