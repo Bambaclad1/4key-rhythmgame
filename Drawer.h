@@ -5,7 +5,8 @@
 class Drawer
 {
 public:
-	void Setup();
+	void SetupTextures();
+	void SetupText();
 	void Draw(sf::RenderWindow& MainWindow);
 private:
 	sf::Texture arrowUpText;
@@ -17,4 +18,7 @@ private:
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
+
+	sf::Font nerdfont;
+	sf::Text text;
 };
