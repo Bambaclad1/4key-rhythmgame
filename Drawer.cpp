@@ -7,7 +7,7 @@ void Drawer::SetupTextures()
 		!arrowLeftText.loadFromFile("resources/gamesprites/arrowLeft.png") ||
 		!arrowRightText.loadFromFile("resources/gamesprites/arrowRight.png"))
 	{
-		std::cerr << "Error! Unable to load textures!" << std::endl;
+		std::cout << "Error! Unable to load textures!" << std::endl;
 	}
 
 	arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
@@ -34,11 +34,11 @@ void Drawer::SetupText()
 {
 	if (!nerdfont.loadFromFile("resources/fonts/0xProtoNerdFont-Regular.ttf"))
 	{
-		std::cout << "fuck!";
+		std::cout << "Error! Unable to load Fonts!!" << std::endl;
 	}
 	text.setFont(nerdfont);
 	text.setString("Hello World!.");
-	text.setCharacterSize(12); // in pixels, not points!
+	text.setCharacterSize(12);
 	text.setFillColor(sf::Color::Black);
 
 }

@@ -8,7 +8,7 @@ int main()
 {
 	Game game;
 	Drawer drawer;
-	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG verInit");
+	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG ver?");
 
 	drawer.SetupTextures();
 	drawer.SetupText();
