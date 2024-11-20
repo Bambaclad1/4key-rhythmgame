@@ -3,7 +3,15 @@
 #include <iostream>
 #include "Game.h"
 #include "Drawer.h"
+/*
+				NEXT SPRINT - Keep pulling the GIT for changes!
+			
+	* Keylanes react to bounding box, giving a visualization.
+	* Also giving a sense that the button IS infact pressed and does something
+	* For example, the arrow will give a feedback, that it for example lightens up or bounces!
+	* WOW!
 
+*/
 int main()
 {
 	Game game;
@@ -23,6 +31,8 @@ int main()
 			
 		MainWindow.clear(sf::Color::White);
 		drawer.Draw(MainWindow);
+		drawer.BoundingBox(MainWindow);
+
 		MainWindow.display();		
 
 	}

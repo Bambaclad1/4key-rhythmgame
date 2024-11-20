@@ -8,6 +8,7 @@ public:
 	void SetupTextures();
 	void SetupText();
 	void Draw(sf::RenderWindow& MainWindow);
+	void BoundingBox(sf::RenderWindow& MainWindow);
 private:
 	sf::Texture arrowUpText;
 	sf::Texture arrowDownText;
@@ -21,4 +22,5 @@ private:
 
 	sf::Font nerdfont;
 	sf::Text text;
+	
 };
