@@ -14,8 +14,8 @@
 */
 int main()
 {
-	Game game;
 	Drawer drawer;
+	Game game(drawer);
 	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG ver?");
 
 	drawer.SetupTextures();
@@ -23,13 +23,15 @@ int main()
 	while (MainWindow.isOpen())
 	{
 		sf::Event event;
+		MainWindow.setKeyRepeatEnabled(false);
 		while (MainWindow.pollEvent(event))
 		{
 			game.Management(MainWindow, event);
 			game.KeyboardHandler(MainWindow, event);
 		}
 			
-		MainWindow.clear(sf::Color::White);
+		MainWindow.clear(sf::Color(137,137,137));
+
 		drawer.Draw(MainWindow);
 		drawer.BoundingBox(MainWindow);
 

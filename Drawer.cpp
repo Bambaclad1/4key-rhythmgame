@@ -1,21 +1,24 @@
 #include "Drawer.h"
 
-
-
 void Drawer::SetupTextures()
 {
-	if (!arrowUpText.loadFromFile("resources/gamesprites/arrowUp.png") ||
-		!arrowDownText.loadFromFile("resources/gamesprites/arrowDown.png") ||
-		!arrowLeftText.loadFromFile("resources/gamesprites/arrowLeft.png") ||
-		!arrowRightText.loadFromFile("resources/gamesprites/arrowRight.png"))
+	if (!arrowUpText.loadFromFile("resources/gamesprites/arrowUpD.png") ||
+		!arrowDownText.loadFromFile("resources/gamesprites/arrowDownD.png") ||
+		!arrowLeftText.loadFromFile("resources/gamesprites/arrowLeftD.png") ||
+		!arrowRightText.loadFromFile("resources/gamesprites/arrowRightD.png") ||
+		!arrowUpKDText.loadFromFile("resources/gamesprites/arrowUpKD.png") ||
+		!arrowDownKDText.loadFromFile("resources/gamesprites/arrowDownKD.png") ||
+		!arrowLeftKDText.loadFromFile("resources/gamesprites/arrowLeftKD.png") ||
+		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png"))
+
 	{
-	
 		std::cout << "Error! Unable to load textures!" << std::endl;
 	}
 
-	arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
-
-
+	arrowUpText.setSmooth(true);
+	arrowDownText.setSmooth(true);
+	arrowLeftText.setSmooth(true);
+	arrowRightText.setSmooth(true);
 
 	arrowLeft.setPosition(450, 700);
 	arrowLeft.setScale(0.5f, 0.5f);
@@ -42,8 +45,8 @@ void Drawer::SetupText()
 		std::cout << "Error! Unable to load Fonts!!" << std::endl;
 	}
 	text.setFont(nerdfont);
-	text.setString("Hello World!.");
-	text.setCharacterSize(12);
+	text.setString("D F J K - Keybinds for Lanes.");
+	text.setCharacterSize(16);
 	text.setFillColor(sf::Color::Black);
 
 	sf::Vector2u textureSize = arrowUpText.getSize();
@@ -53,8 +56,6 @@ void Drawer::SetupText()
 	float scaledHeight = textureSize.y * scale.y;
 
 	std::cout << "Scaled Width: " << scaledWidth << ", Scaled Height: " << scaledHeight << std::endl;
-
-
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow)
@@ -63,15 +64,13 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 	MainWindow.draw(arrowDown);
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
-
-
 }
 
 void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 {
 	sf::RectangleShape boundingBox;
 	boundingBox.setSize(sf::Vector2f(arrowUp.getGlobalBounds().width, arrowUp.getGlobalBounds().height));
-	boundingBox.setOutlineColor(sf::Color::Red); // Set outline color to make it visible
+	boundingBox.setOutlineColor(sf::Color::Red);
 	boundingBox.setOutlineThickness(1.0f);
 	boundingBox.setFillColor(sf::Color::Transparent);
 
@@ -89,4 +88,40 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	MainWindow.draw(boundingBox);
 
 	MainWindow.draw(text);
+}
+
+void Drawer::ChangeTexture(int lane)
+{
+	if (lane == 1) {
+		arrowLeft.setTexture(arrowLeftKDText);
+	}
+	else if (lane == 2) {
+		arrowDown.setTexture(arrowDownKDText);
+	}
+	else if (lane == 3) {
+		arrowUp.setTexture(arrowUpKDText);
+	}
+	else if (lane == 4) {
+		arrowRight.setTexture(arrowRightKDText);
+	}
+
+	std::cout << "Changed texture for lane " << lane << std::endl;
+}
+void Drawer::ResetTexture(int lane)
+{
+	switch (lane)
+	{
+	case 1:
+		arrowLeft.setTexture(arrowLeftText, true);
+		break;
+	case 2:
+		arrowDown.setTexture(arrowDownText);
+		break;
+	case 3:
+		arrowUp.setTexture(arrowUpText);
+		break;
+	case 4:
+		arrowRight.setTexture(arrowRightText);
+		break;
+	}
 }
