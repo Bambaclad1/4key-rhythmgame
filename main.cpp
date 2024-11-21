@@ -5,11 +5,13 @@
 #include "Drawer.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
+				Commit 21-11 | 2 - Target: 25-11
 			
-	* Keylanes react to bounding box, giving a visualization.
-	* Also giving a sense that the button IS infact pressed and does something
-	* For example, the arrow will give a feedback, that it for example lightens up or bounces!
-	* WOW!
+	* Buttons work!
+	* Add arrows falling down with a constant speed!
+	* when they collide, do something! Maybe kill them!
+	* use the colored arrows for that!
+	* Good luck!
 
 */
 int main()

@@ -35,22 +35,18 @@ void Game::KeyboardHandler(sf::RenderWindow& MainWindow, sf::Event& event)
         if (event.key.code == KeyLane1)
         {
             drawer->ChangeTexture(1);
-            std::cout << "KeyLane 1 pressed" << std::endl;
         }
         else if (event.key.code == KeyLane2)
         {
             drawer->ChangeTexture(2);
-            std::cout << "KeyLane 2 pressed" << std::endl;
         }
         else if (event.key.code == KeyLane3)
         {
             drawer->ChangeTexture(3);
-            std::cout << "KeyLane 3 pressed" << std::endl;
         }
         else if (event.key.code == KeyLane4)
         {
             drawer->ChangeTexture(4);
-            std::cout << "KeyLane 4 pressed" << std::endl;
         }
     }
     else if (event.type == sf::Event::KeyReleased)

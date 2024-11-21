@@ -104,8 +104,6 @@ void Drawer::ChangeTexture(int lane)
 	else if (lane == 4) {
 		arrowRight.setTexture(arrowRightKDText);
 	}
-
-	std::cout << "Changed texture for lane " << lane << std::endl;
 }
 void Drawer::ResetTexture(int lane)
 {
