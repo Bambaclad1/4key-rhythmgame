@@ -5,19 +5,19 @@
 #include "Drawer.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
-				Commit 21-11 | 2 - Target: 25-11
+				Commit 25-11 | 2 - Target: 27-11
 			
-	* Buttons work!
-	* Add arrows falling down with a constant speed!
-	* when they collide, do something! Maybe kill them!
-	* use the colored arrows for that!
-	* Good luck!
+	* Make arrows collide with base arrows
+	* Initiate Arrows at top again
+	* Give reaction time, ok, good, perfect based on size!
+	* Goodluck!
 
 */
 int main()
 {
 	Drawer drawer;
 	Game game(drawer);
+	sf::Clock clock; 
 	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG ver?");
 
 	drawer.SetupTextures();
@@ -31,10 +31,15 @@ int main()
 			game.Management(MainWindow, event);
 			game.KeyboardHandler(MainWindow, event);
 		}
-			
+
+		sf::Time elapsed = clock.restart();
+		float deltaTime = elapsed.asSeconds();
+		drawer.Update(deltaTime);  
+
+
 		MainWindow.clear(sf::Color(137,137,137));
 
-		drawer.Draw(MainWindow);
+		drawer.Draw(MainWindow); // base arrows check for input
 		drawer.BoundingBox(MainWindow);
 
 		MainWindow.display();		

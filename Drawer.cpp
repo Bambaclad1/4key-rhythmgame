@@ -9,16 +9,18 @@ void Drawer::SetupTextures()
 		!arrowUpKDText.loadFromFile("resources/gamesprites/arrowUpKD.png") ||
 		!arrowDownKDText.loadFromFile("resources/gamesprites/arrowDownKD.png") ||
 		!arrowLeftKDText.loadFromFile("resources/gamesprites/arrowLeftKD.png") ||
-		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png"))
+		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png") || 
+		!arrowUpFText.loadFromFile("resources/gamesprites/arrowUp.png") ||
+		!arrowDownFText.loadFromFile("resources/gamesprites/arrowDown.png") ||
+		!arrowLeftFText.loadFromFile("resources/gamesprites/arrowLeft.png") ||
+		!arrowRightFText.loadFromFile("resources/gamesprites/arrowRight.png"))
 
 	{
 		std::cout << "Error! Unable to load textures!" << std::endl;
 	}
 
-	arrowUpText.setSmooth(true);
-	arrowDownText.setSmooth(true);
-	arrowLeftText.setSmooth(true);
-	arrowRightText.setSmooth(true);
+	arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
+	arrowUpKDText.setSmooth(true), arrowDownKDText.setSmooth(true), arrowLeftKDText.setSmooth(true), arrowRightKDText.setSmooth(true);
 
 	arrowLeft.setPosition(450, 700);
 	arrowLeft.setScale(0.5f, 0.5f);
@@ -36,6 +38,16 @@ void Drawer::SetupTextures()
 	arrowDown.setTexture(arrowDownText);
 	arrowLeft.setTexture(arrowLeftText);
 	arrowRight.setTexture(arrowRightText);
+
+
+	arrow1.setScale(0.5f, 0.5f), arrow2.setScale(0.5f, 0.5f), arrow3.setScale(0.5f, 0.5f), arrow4.setScale(0.5f, 0.5f);
+	arrow1.setPosition(750, 0), arrow2.setPosition(600, 0), arrow3.setPosition(450, 0), arrow4.setPosition(900, 0);
+
+	arrow1.setTexture(arrowUpFText);
+	arrow2.setTexture(arrowDownFText);
+	arrow3.setTexture(arrowLeftFText);
+	arrow4.setTexture(arrowRightFText);
+
 }
 
 void Drawer::SetupText()
@@ -64,6 +76,28 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 	MainWindow.draw(arrowDown);
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
+
+	MainWindow.draw(arrow1);
+	MainWindow.draw(arrow2);
+	MainWindow.draw(arrow3);
+	MainWindow.draw(arrow4);
+}
+
+void Drawer::Update(float deltaTime)
+{
+	const float speed = 500.0f; 
+
+	// Move the arrows down
+	arrow1.move(0, speed * deltaTime);
+	arrow2.move(0, speed * deltaTime);
+	arrow3.move(0, speed * deltaTime);
+	arrow4.move(0, speed * deltaTime);
+
+	// Reset arrows to the top if they go off-screen (example)
+	if (arrow1.getPosition().y > 900) arrow1.setPosition(750, 0);
+	if (arrow2.getPosition().y > 900) arrow2.setPosition(600, 0);
+	if (arrow3.getPosition().y > 900) arrow3.setPosition(450, 0);
+	if (arrow4.getPosition().y > 900) arrow4.setPosition(900, 0);
 }
 
 void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
