@@ -35,18 +35,22 @@ void Game::KeyboardHandler(sf::RenderWindow& MainWindow, sf::Event& event)
         if (event.key.code == KeyLane1)
         {
             drawer->ChangeTexture(1);
+            drawer->SetLeftPressed(true);
         }
         else if (event.key.code == KeyLane2)
         {
             drawer->ChangeTexture(2);
+            drawer->SetDownPressed(true);
         }
         else if (event.key.code == KeyLane3)
         {
             drawer->ChangeTexture(3);
+            drawer->SetUpPressed(true);
         }
         else if (event.key.code == KeyLane4)
         {
             drawer->ChangeTexture(4);
+            drawer->SetRightPressed(true);
         }
     }
     else if (event.type == sf::Event::KeyReleased)

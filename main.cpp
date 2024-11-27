@@ -9,6 +9,7 @@
 			
 	* Make arrows collide with base arrows
 	* Initiate Arrows at top again
+	* Tidy up code - get to working design
 	* Give reaction time, ok, good, perfect based on size!
 	* Goodluck!
 

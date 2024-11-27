@@ -9,7 +9,7 @@ void Drawer::SetupTextures()
 		!arrowUpKDText.loadFromFile("resources/gamesprites/arrowUpKD.png") ||
 		!arrowDownKDText.loadFromFile("resources/gamesprites/arrowDownKD.png") ||
 		!arrowLeftKDText.loadFromFile("resources/gamesprites/arrowLeftKD.png") ||
-		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png") || 
+		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png") ||
 		!arrowUpFText.loadFromFile("resources/gamesprites/arrowUp.png") ||
 		!arrowDownFText.loadFromFile("resources/gamesprites/arrowDown.png") ||
 		!arrowLeftFText.loadFromFile("resources/gamesprites/arrowLeft.png") ||
@@ -39,7 +39,6 @@ void Drawer::SetupTextures()
 	arrowLeft.setTexture(arrowLeftText);
 	arrowRight.setTexture(arrowRightText);
 
-
 	arrow1.setScale(0.5f, 0.5f), arrow2.setScale(0.5f, 0.5f), arrow3.setScale(0.5f, 0.5f), arrow4.setScale(0.5f, 0.5f);
 	arrow1.setPosition(750, 0), arrow2.setPosition(600, 0), arrow3.setPosition(450, 0), arrow4.setPosition(900, 0);
 
@@ -47,7 +46,6 @@ void Drawer::SetupTextures()
 	arrow2.setTexture(arrowDownFText);
 	arrow3.setTexture(arrowLeftFText);
 	arrow4.setTexture(arrowRightFText);
-
 }
 
 void Drawer::SetupText()
@@ -60,14 +58,6 @@ void Drawer::SetupText()
 	text.setString("D F J K - Keybinds for Lanes.");
 	text.setCharacterSize(16);
 	text.setFillColor(sf::Color::Black);
-
-	sf::Vector2u textureSize = arrowUpText.getSize();
-	sf::Vector2f scale = arrowUp.getScale();
-
-	float scaledWidth = textureSize.x * scale.x;
-	float scaledHeight = textureSize.y * scale.y;
-
-	std::cout << "Scaled Width: " << scaledWidth << ", Scaled Height: " << scaledHeight << std::endl;
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow)
@@ -85,7 +75,7 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 
 void Drawer::Update(float deltaTime)
 {
-	const float speed = 500.0f; 
+	const float speed = 600.0f;
 
 	// Move the arrows down
 	arrow1.move(0, speed * deltaTime);
@@ -108,18 +98,52 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	boundingBox.setOutlineThickness(1.0f);
 	boundingBox.setFillColor(sf::Color::Transparent);
 
-	// Draw Bounding Boxes
-	boundingBox.setPosition(arrowUp.getGlobalBounds().left, arrowUp.getGlobalBounds().top);
-	MainWindow.draw(boundingBox);
+	auto drawBoundingBox = [&](const sf::Sprite& arrow) {
+		boundingBox.setPosition(arrow.getGlobalBounds().left, arrow.getGlobalBounds().top);
+		MainWindow.draw(boundingBox);
+		};
 
-	boundingBox.setPosition(arrowDown.getGlobalBounds().left, arrowDown.getGlobalBounds().top);
-	MainWindow.draw(boundingBox);
+	drawBoundingBox(arrowUp);
+	drawBoundingBox(arrowDown);
+	drawBoundingBox(arrowLeft);
+	drawBoundingBox(arrowRight);
+	drawBoundingBox(arrow1);
+	drawBoundingBox(arrow2);
+	drawBoundingBox(arrow3);
+	drawBoundingBox(arrow4);
 
-	boundingBox.setPosition(arrowLeft.getGlobalBounds().left, arrowLeft.getGlobalBounds().top);
-	MainWindow.draw(boundingBox);
+	if (LeftPressed) {
+		if (arrowLeft.getGlobalBounds().intersects(arrow3.getGlobalBounds())) {
+			std::cout << "Left!" << std::endl;
+			arrow3.setPosition(450, 0);
+			LeftPressed = false;
+		}
+	}
+	if (DownPressed)
+	{
+		if (arrowDown.getGlobalBounds().intersects(arrow2.getGlobalBounds())) {
+			std::cout << "Down!" << std::endl;
+			arrow2.setPosition(600, 0);
+			DownPressed = false;
+		}
+	}
+	if (UpPressed)
+	{
+		if (arrowUp.getGlobalBounds().intersects(arrow1.getGlobalBounds())) {
+			std::cout << "Up!" << std::endl;
+			arrow1.setPosition(750, 0);
+			UpPressed = false;
+		}
+	}
+	if (RightPressed)
+	{
+		if (arrowRight.getGlobalBounds().intersects(arrow4.getGlobalBounds())) {
+			std::cout << "Right!" << std::endl;
+			arrow4.setPosition(900, 0);
+			RightPressed = false;
+		}
+	}
 
-	boundingBox.setPosition(arrowRight.getGlobalBounds().left, arrowRight.getGlobalBounds().top);
-	MainWindow.draw(boundingBox);
 
 	MainWindow.draw(text);
 }

@@ -13,6 +13,17 @@ public:
 
 	void ChangeTexture(int lane);
 	void ResetTexture(int lane);
+
+	bool IsLeftPressed() const { return LeftPressed; }
+	bool IsDownPressed() const { return DownPressed; }
+	bool IsUpPressed() const { return UpPressed; }
+	bool IsRightPressed() const { return RightPressed; }
+
+	void SetLeftPressed(bool pressed) { LeftPressed = pressed; }
+	void SetDownPressed(bool pressed) { DownPressed = pressed; }
+	void SetUpPressed(bool pressed) { UpPressed = pressed; }
+	void SetRightPressed(bool pressed) { RightPressed = pressed; }
+
 private:
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
@@ -41,6 +52,11 @@ private:
 
 	sf::Font nerdfont;
 	sf::Text text;
+
+	bool LeftPressed = false;
+	bool DownPressed = false;
+	bool UpPressed = false;
+	bool RightPressed = false;
 
 
 	
