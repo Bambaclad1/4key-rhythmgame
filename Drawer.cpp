@@ -58,6 +58,11 @@ void Drawer::SetupText()
 	text.setString("D F J K - Keybinds for Lanes.");
 	text.setCharacterSize(16);
 	text.setFillColor(sf::Color::Black);
+
+	scoreJudge.setFont(nerdfont);
+	scoreJudge.setCharacterSize(52);
+
+	scoreJudge.setPosition(600, 550);
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow)
@@ -71,23 +76,22 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 	MainWindow.draw(arrow2);
 	MainWindow.draw(arrow3);
 	MainWindow.draw(arrow4);
+	MainWindow.draw(scoreJudge);
 }
 
 void Drawer::Update(float deltaTime)
 {
-	const float speed = 600.0f;
+	const float speed = 800.0f;
 
-	// Move the arrows down
 	arrow1.move(0, speed * deltaTime);
 	arrow2.move(0, speed * deltaTime);
 	arrow3.move(0, speed * deltaTime);
 	arrow4.move(0, speed * deltaTime);
 
-	// Reset arrows to the top if they go off-screen (example)
-	if (arrow1.getPosition().y > 900) arrow1.setPosition(750, 0);
-	if (arrow2.getPosition().y > 900) arrow2.setPosition(600, 0);
-	if (arrow3.getPosition().y > 900) arrow3.setPosition(450, 0);
-	if (arrow4.getPosition().y > 900) arrow4.setPosition(900, 0);
+	if (arrow1.getPosition().y > 900) arrow1.setPosition(750, -150), UpIsTrue = true;
+	if (arrow2.getPosition().y > 900) arrow2.setPosition(600, -150), DownIsTrue = true;
+	if (arrow3.getPosition().y > 900) arrow3.setPosition(450, -150), LeftIsTrue = true;
+	if (arrow4.getPosition().y > 900) arrow4.setPosition(900, -150), RightIsTrue = true;
 }
 
 void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
@@ -112,38 +116,246 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	drawBoundingBox(arrow3);
 	drawBoundingBox(arrow4);
 
+	if (timerStarted) {
+		float elapsed = timer.getElapsedTime().asSeconds();
+		if (elapsed <= 0.1f) {
+			float scaleFactor = 1.0f + elapsed * 3.0f;
+			scoreJudge.setScale(scaleFactor, scaleFactor);
+		}
+		else {
+			scoreJudge.setScale(1.0f, 1.0f);
+			scoreJudge.setString("");
+			timerStarted = false;
+		}
+	}
+	float arrowY = arrow3.getPosition().y;
 	if (LeftPressed) {
-		if (arrowLeft.getGlobalBounds().intersects(arrow3.getGlobalBounds())) {
-			std::cout << "Left!" << std::endl;
-			arrow3.setPosition(450, 0);
-			LeftPressed = false;
+		float arrowX = arrow3.getPosition().x;
+		float arrowY = arrow3.getPosition().y;
+
+		if (arrowY >= 600 && arrowY <= 750) {
+			if (arrowY >= 670 && arrowY <= 730)
+			{
+				std::cout << "Perfect!\n";
+				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
+				scoreJudge.setString("Perfect!");
+				arrow3.setPosition(450, -150);
+				LeftPressed = false;
+			}
+			else if (arrowY >= 650 && arrowY <= 670)
+			{
+				std::cout << "Good!\n";
+				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
+				scoreJudge.setString("Good!");
+				arrow3.setPosition(450, -150);
+				LeftPressed = false;
+			}
+			else if (arrowY = 600 && arrowY <= 650) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
+				scoreJudge.setString("Ok!");
+				arrow3.setPosition(450, -150);
+				LeftPressed = false;
+			}
+			else if (arrowY >= 750 && arrowY <= 750) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
+				scoreJudge.setString("Ok!");
+				arrow3.setPosition(450, -150);
+				LeftPressed = false;
+			}
+			else if (arrowY >= 900 && arrowY <= 750)
+			{
+				std::cout << "Miss..\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+				scoreJudge.setString("Miss!");
+				LeftPressed = false;
+			}
+
+			timer.restart();
+			timerStarted = true;
 		}
 	}
 	if (DownPressed)
 	{
-		if (arrowDown.getGlobalBounds().intersects(arrow2.getGlobalBounds())) {
-			std::cout << "Down!" << std::endl;
-			arrow2.setPosition(600, 0);
-			DownPressed = false;
+		float arrowX = arrow2.getPosition().x;
+		float arrowY = arrow2.getPosition().y;
+
+		if (arrowY >= 600 && arrowY <= 750) {
+			if (arrowY >= 670 && arrowY <= 730)
+			{
+				std::cout << "Perfect!\n";
+				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
+				scoreJudge.setString("Perfect!");
+				arrow2.setPosition(600, -150);
+				DownPressed = false;
+			}
+			else if (arrowY >= 650 && arrowY <= 670)
+			{
+				std::cout << "Good!\n";
+				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
+				scoreJudge.setString("Good!");
+				arrow2.setPosition(600, -150);
+				DownPressed = false;
+			}
+			else if (arrowY = 600 && arrowY <= 650) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
+				scoreJudge.setString("Ok!");
+				arrow2.setPosition(600, -150);
+				DownPressed = false;
+			}
+			else if (arrowY >= 750 && arrowY <= 750) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
+				scoreJudge.setString("Ok!");
+				arrow2.setPosition(600, -150);
+				DownPressed = false;
+			}
+			else if (arrowY >= 900 && arrowY <= 750)
+			{
+				std::cout << "Miss..\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+				scoreJudge.setString("Miss!");
+				DownPressed = false;
+			}
+
+			timer.restart();
+			timerStarted = true;
 		}
 	}
 	if (UpPressed)
 	{
-		if (arrowUp.getGlobalBounds().intersects(arrow1.getGlobalBounds())) {
-			std::cout << "Up!" << std::endl;
-			arrow1.setPosition(750, 0);
-			UpPressed = false;
+		float arrowX = arrow1.getPosition().x;
+		float arrowY = arrow1.getPosition().y;
+
+		if (arrowY >= 600 && arrowY <= 750) {
+			if (arrowY >= 670 && arrowY <= 730)
+			{
+				std::cout << "Perfect!\n";
+				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
+				scoreJudge.setString("Perfect!");
+				arrow1.setPosition(750, -150);
+				UpPressed = false;
+			}
+			else if (arrowY >= 650 && arrowY <= 670)
+			{
+				std::cout << "Good!\n";
+				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
+				scoreJudge.setString("Good!");
+				arrow1.setPosition(750, -150);
+				UpPressed = false;
+			}
+			else if (arrowY = 600 && arrowY <= 650) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
+				scoreJudge.setString("Ok!");
+				arrow1.setPosition(750, -150);
+				UpPressed = false;
+			}
+			else if (arrowY >= 750 && arrowY <= 750) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
+				scoreJudge.setString("Ok!");
+				arrow1.setPosition(750, -150);
+				UpPressed = false;
+			}
+			else if (arrowY >= 900 && arrowY <= 750)
+			{
+				std::cout << "Miss..\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+				scoreJudge.setString("Miss!");
+				UpPressed = false;
+			}
+
+			timer.restart();
+			timerStarted = true;
 		}
 	}
 	if (RightPressed)
 	{
-		if (arrowRight.getGlobalBounds().intersects(arrow4.getGlobalBounds())) {
-			std::cout << "Right!" << std::endl;
-			arrow4.setPosition(900, 0);
-			RightPressed = false;
+		float arrowX = arrow4.getPosition().x;
+		float arrowY = arrow4.getPosition().y;
+
+		if (arrowY >= 600 && arrowY <= 750) {
+			if (arrowY >= 670 && arrowY <= 730)
+			{
+				std::cout << "Perfect!\n";
+				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
+				scoreJudge.setString("Perfect!");
+				arrow4.setPosition(900, -150);
+				RightPressed = false;
+			}
+			else if (arrowY >= 650 && arrowY <= 670)
+			{
+				std::cout << "Good!\n";
+				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
+				scoreJudge.setString("Good!");
+				arrow4.setPosition(900, -150);
+				RightPressed = false;
+			}
+			else if (arrowY = 600 && arrowY <= 650) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
+				scoreJudge.setString("Ok!");
+				arrow4.setPosition(900, -150);
+				RightPressed = false;
+			}
+			else if (arrowY >= 750 && arrowY <= 750) {
+				std::cout << "Ok!\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
+				scoreJudge.setString("Ok!");
+				arrow4.setPosition(900, -150);
+				RightPressed = false;
+			}
+			else if (arrowY >= 900 && arrowY <= 750)
+			{
+				std::cout << "Miss..\n";
+				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+				scoreJudge.setString("Miss!");
+				RightPressed = false;
+			}
+
+			timer.restart();
+			timerStarted = true;
 		}
 	}
 
+	float arrowLeftY = arrow3.getPosition().y;
+	if (arrowLeftY >= 800 && LeftIsTrue == true)
+	{
+		std::cout << "Miss..\n";
+		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+		scoreJudge.setString("Miss!");
+		LeftIsTrue = false;
+	}
+
+	float arrowDownY = arrow2.getPosition().y;
+	if (arrowDownY >= 800 && DownIsTrue == true)
+	{
+		std::cout << "Miss..\n";
+		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+		scoreJudge.setString("Miss!");
+		DownIsTrue = false;
+	}
+
+	float arrowUpY = arrow1.getPosition().y;
+	if (arrowUpY >= 800 && UpIsTrue == true)
+	{
+		std::cout << "Miss..\n";
+		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+		scoreJudge.setString("Miss!");
+		UpIsTrue = false;
+	}
+
+	float arrowRightY = arrow4.getPosition().y;
+	if (arrowRightY >= 800 && RightIsTrue == true)
+	{
+		std::cout << "Miss..\n";
+		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
+		scoreJudge.setString("Miss!");
+		RightIsTrue = false;
+	}
 
 	MainWindow.draw(text);
 }
@@ -168,7 +380,7 @@ void Drawer::ResetTexture(int lane)
 	switch (lane)
 	{
 	case 1:
-		arrowLeft.setTexture(arrowLeftText, true);
+		arrowLeft.setTexture(arrowLeftText);
 		break;
 	case 2:
 		arrowDown.setTexture(arrowDownText);

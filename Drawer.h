@@ -52,12 +52,20 @@ private:
 
 	sf::Font nerdfont;
 	sf::Text text;
+	sf::Text scoreJudge;
 
 	bool LeftPressed = false;
 	bool DownPressed = false;
 	bool UpPressed = false;
 	bool RightPressed = false;
 
+	sf::Clock timer;
+	bool timerStarted = false;
+
+	bool LeftIsTrue = true;
+	bool DownIsTrue = true;
+	bool UpIsTrue = true;
+	bool RightIsTrue = true;
 
 	
 };

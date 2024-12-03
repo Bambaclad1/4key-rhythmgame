@@ -5,13 +5,16 @@
 #include "Drawer.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
-				Commit 25-11 | 2 - Target: 27-11
+				Commit 3-12-2024 | 2 - Target: 4-12-2024
 			
-	* Make arrows collide with base arrows
-	* Initiate Arrows at top again
-	* Tidy up code - get to working design
-	* Give reaction time, ok, good, perfect based on size!
-	* Goodluck!
+		* Get a class working 
+		* Arrow class
+		* Give it attributes such as position and stuff
+		* Make it move down and stuff
+		* Make a class for every map
+		* That, just get easy map eidigtng and make the 
+		* arroww work w it
+;
 
 */
 int main()
