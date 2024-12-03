@@ -67,5 +67,7 @@ private:
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
 
+	int Score;
+
 	
 };
