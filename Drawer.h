@@ -53,6 +53,9 @@ private:
 	sf::Font nerdfont;
 	sf::Text text;
 	sf::Text scoreJudge;
+	sf::Text Score;
+	
+	int ScoreCounter = 0;
 
 	bool LeftPressed = false;
 	bool DownPressed = false;
@@ -67,7 +70,6 @@ private:
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
 
-	int Score;
 
 	
 };

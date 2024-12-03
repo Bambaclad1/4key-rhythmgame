@@ -63,6 +63,11 @@ void Drawer::SetupText()
 	scoreJudge.setCharacterSize(52);
 
 	scoreJudge.setPosition(600, 550);
+
+	Score.setFont(nerdfont);
+	Score.setCharacterSize(60);
+	Score.setFillColor(sf::Color::Magenta);
+	Score.setPosition(300, 300);
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow)
@@ -77,6 +82,8 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 	MainWindow.draw(arrow3);
 	MainWindow.draw(arrow4);
 	MainWindow.draw(scoreJudge);
+	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
+
 }
 
 void Drawer::Update(float deltaTime)
@@ -140,6 +147,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow3.setPosition(450, -150);
+				ScoreCounter = ScoreCounter + 500;
 				LeftPressed = false;
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
