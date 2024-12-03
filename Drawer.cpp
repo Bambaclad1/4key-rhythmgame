@@ -143,7 +143,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		if (arrowY >= 600 && arrowY <= 750) {
 			if (arrowY >= 670 && arrowY <= 730)
 			{
-				std::cout << "Perfect!\n";
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow3.setPosition(450, -150);
@@ -152,21 +151,18 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
 			{
-				std::cout << "Good!\n";
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow3.setPosition(450, -150);
 				LeftPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow3.setPosition(450, -150);
 				LeftPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
 				scoreJudge.setString("Ok!");
 				arrow3.setPosition(450, -150);
@@ -174,7 +170,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 900 && arrowY <= 750)
 			{
-				std::cout << "Miss..\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
 				LeftPressed = false;
@@ -192,7 +187,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		if (arrowY >= 600 && arrowY <= 750) {
 			if (arrowY >= 670 && arrowY <= 730)
 			{
-				std::cout << "Perfect!\n";
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow2.setPosition(600, -150);
@@ -200,21 +194,18 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
 			{
-				std::cout << "Good!\n";
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow2.setPosition(600, -150);
 				DownPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow2.setPosition(600, -150);
 				DownPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
 				scoreJudge.setString("Ok!");
 				arrow2.setPosition(600, -150);
@@ -222,7 +213,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 900 && arrowY <= 750)
 			{
-				std::cout << "Miss..\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
 				DownPressed = false;
@@ -240,7 +230,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		if (arrowY >= 600 && arrowY <= 750) {
 			if (arrowY >= 670 && arrowY <= 730)
 			{
-				std::cout << "Perfect!\n";
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow1.setPosition(750, -150);
@@ -248,21 +237,18 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
 			{
-				std::cout << "Good!\n";
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow1.setPosition(750, -150);
 				UpPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow1.setPosition(750, -150);
 				UpPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
 				scoreJudge.setString("Ok!");
 				arrow1.setPosition(750, -150);
@@ -270,7 +256,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 900 && arrowY <= 750)
 			{
-				std::cout << "Miss..\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
 				UpPressed = false;
@@ -288,7 +273,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		if (arrowY >= 600 && arrowY <= 750) {
 			if (arrowY >= 670 && arrowY <= 730)
 			{
-				std::cout << "Perfect!\n";
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow4.setPosition(900, -150);
@@ -296,21 +280,18 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
 			{
-				std::cout << "Good!\n";
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow4.setPosition(900, -150);
 				RightPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow4.setPosition(900, -150);
 				RightPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
-				std::cout << "Ok!\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 69));
 				scoreJudge.setString("Ok!");
 				arrow4.setPosition(900, -150);
@@ -318,7 +299,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 			else if (arrowY >= 900 && arrowY <= 750)
 			{
-				std::cout << "Miss..\n";
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
 				RightPressed = false;
@@ -332,7 +312,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	float arrowLeftY = arrow3.getPosition().y;
 	if (arrowLeftY >= 800 && LeftIsTrue == true)
 	{
-		std::cout << "Miss..\n";
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
 		LeftIsTrue = false;
@@ -341,7 +320,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	float arrowDownY = arrow2.getPosition().y;
 	if (arrowDownY >= 800 && DownIsTrue == true)
 	{
-		std::cout << "Miss..\n";
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
 		DownIsTrue = false;
@@ -350,7 +328,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	float arrowUpY = arrow1.getPosition().y;
 	if (arrowUpY >= 800 && UpIsTrue == true)
 	{
-		std::cout << "Miss..\n";
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
 		UpIsTrue = false;
@@ -359,7 +336,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	float arrowRightY = arrow4.getPosition().y;
 	if (arrowRightY >= 800 && RightIsTrue == true)
 	{
-		std::cout << "Miss..\n";
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
 		RightIsTrue = false;

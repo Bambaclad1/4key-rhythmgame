@@ -142,10 +142,12 @@
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mapping.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Mapping.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
