@@ -67,7 +67,7 @@ void Drawer::SetupText()
 	Score.setFont(nerdfont);
 	Score.setCharacterSize(60);
 	Score.setFillColor(sf::Color::Magenta);
-	Score.setPosition(300, 300);
+	Score.setPosition(100, 250);
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow)
@@ -146,7 +146,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow3.setPosition(450, -150);
-				ScoreCounter = ScoreCounter + 500;
+				ScoreCounter = ScoreCounter + 300;
 				LeftPressed = false;
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
@@ -154,12 +154,14 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow3.setPosition(450, -150);
+				ScoreCounter = ScoreCounter + 200;
 				LeftPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow3.setPosition(450, -150);
+				ScoreCounter = ScoreCounter + 100;
 				LeftPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
@@ -190,6 +192,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow2.setPosition(600, -150);
+				ScoreCounter = ScoreCounter + 300;
 				DownPressed = false;
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
@@ -197,12 +200,14 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow2.setPosition(600, -150);
+				ScoreCounter = ScoreCounter + 200;
 				DownPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow2.setPosition(600, -150);
+				ScoreCounter = ScoreCounter + 100;
 				DownPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
@@ -233,6 +238,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow1.setPosition(750, -150);
+				ScoreCounter = ScoreCounter + 300;
 				UpPressed = false;
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
@@ -240,12 +246,14 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow1.setPosition(750, -150);
+				ScoreCounter = ScoreCounter + 200;
 				UpPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow1.setPosition(750, -150);
+				ScoreCounter = ScoreCounter + 100;
 				UpPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
@@ -276,6 +284,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(85, 255, 255));
 				scoreJudge.setString("Perfect!");
 				arrow4.setPosition(900, -150);
+				ScoreCounter = ScoreCounter + 300;
 				RightPressed = false;
 			}
 			else if (arrowY >= 650 && arrowY <= 670)
@@ -283,12 +292,14 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				scoreJudge.setFillColor(sf::Color::Color(68, 255, 68));
 				scoreJudge.setString("Good!");
 				arrow4.setPosition(900, -150);
+				ScoreCounter = ScoreCounter + 200;
 				RightPressed = false;
 			}
 			else if (arrowY = 600 && arrowY <= 650) {
 				scoreJudge.setFillColor(sf::Color::Color(255, 255, 68));
 				scoreJudge.setString("Ok!");
 				arrow4.setPosition(900, -150);
+				ScoreCounter = ScoreCounter + 100;
 				RightPressed = false;
 			}
 			else if (arrowY >= 750 && arrowY <= 750) {
