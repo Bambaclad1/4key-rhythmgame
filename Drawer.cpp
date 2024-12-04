@@ -1,5 +1,9 @@
 #include "Drawer.h"
 
+Drawer::Drawer()
+{
+}
+
 void Drawer::SetupTextures()
 {
 	if (!arrowUpText.loadFromFile("resources/gamesprites/arrowUpD.png") ||
@@ -9,14 +13,10 @@ void Drawer::SetupTextures()
 		!arrowUpKDText.loadFromFile("resources/gamesprites/arrowUpKD.png") ||
 		!arrowDownKDText.loadFromFile("resources/gamesprites/arrowDownKD.png") ||
 		!arrowLeftKDText.loadFromFile("resources/gamesprites/arrowLeftKD.png") ||
-		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png") ||
-		!arrowUpFText.loadFromFile("resources/gamesprites/arrowUp.png") ||
-		!arrowDownFText.loadFromFile("resources/gamesprites/arrowDown.png") ||
-		!arrowLeftFText.loadFromFile("resources/gamesprites/arrowLeft.png") ||
-		!arrowRightFText.loadFromFile("resources/gamesprites/arrowRight.png"))
+		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png"))
 
 	{
-		std::cout << "Error! Unable to load textures!" << std::endl;
+		std::cout << "Error! Unable to load Drawer.h files! Check resources/gamesprites if the files are there!" << std::endl;
 	}
 
 	arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
@@ -83,7 +83,6 @@ void Drawer::Draw(sf::RenderWindow& MainWindow)
 	MainWindow.draw(arrow4);
 	MainWindow.draw(scoreJudge);
 	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
-
 }
 
 void Drawer::Update(float deltaTime)
@@ -99,6 +98,8 @@ void Drawer::Update(float deltaTime)
 	if (arrow2.getPosition().y > 900) arrow2.setPosition(600, -150), DownIsTrue = true;
 	if (arrow3.getPosition().y > 900) arrow3.setPosition(450, -150), LeftIsTrue = true;
 	if (arrow4.getPosition().y > 900) arrow4.setPosition(900, -150), RightIsTrue = true;
+
+	float currentTimeStamp = timeFrame.getElapsedTime().asMilliseconds();
 }
 
 void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
@@ -174,6 +175,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
+				ScoreCounter = ScoreCounter - 100;
 				LeftPressed = false;
 			}
 
@@ -220,6 +222,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
+				ScoreCounter = ScoreCounter - 100;
 				DownPressed = false;
 			}
 
@@ -266,6 +269,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
+				ScoreCounter = ScoreCounter - 100;
 				UpPressed = false;
 			}
 
@@ -312,6 +316,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 				scoreJudge.setString("Miss!");
+				ScoreCounter = ScoreCounter - 100;
 				RightPressed = false;
 			}
 
@@ -325,6 +330,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	{
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
+		ScoreCounter = ScoreCounter - 100;
 		LeftIsTrue = false;
 	}
 
@@ -333,6 +339,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	{
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
+		ScoreCounter = ScoreCounter - 100;
 		DownIsTrue = false;
 	}
 
@@ -341,6 +348,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	{
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
+		ScoreCounter = ScoreCounter - 100;
 		UpIsTrue = false;
 	}
 
@@ -349,6 +357,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	{
 		scoreJudge.setFillColor(sf::Color::Color(255, 68, 85));
 		scoreJudge.setString("Miss!");
+		ScoreCounter = ScoreCounter - 100;
 		RightIsTrue = false;
 	}
 

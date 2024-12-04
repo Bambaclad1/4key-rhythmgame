@@ -2,14 +2,12 @@
 
 Game::Game(Drawer& aDrawer)
 {
-    drawer = &aDrawer;
+	drawer = &aDrawer;
 	KeyLane1 = sf::Keyboard::D;
 	KeyLane2 = sf::Keyboard::F;
 	KeyLane3 = sf::Keyboard::J;
 	KeyLane4 = sf::Keyboard::K;
 }
-
-
 
 void Game::Management(sf::RenderWindow& MainWindow, sf::Event& event)
 {
@@ -27,43 +25,41 @@ void Game::Management(sf::RenderWindow& MainWindow, sf::Event& event)
 		std::cout << "window Gained focus.\n";
 }
 
-
 void Game::KeyboardHandler(sf::RenderWindow& MainWindow, sf::Event& event)
 {
-    if (event.type == sf::Event::KeyPressed)
-    {
-        if (event.key.code == KeyLane1)
-        {
-            drawer->ChangeTexture(1);
-            drawer->SetLeftPressed(true);
-        }
-        else if (event.key.code == KeyLane2)
-        {
-            drawer->ChangeTexture(2);
-            drawer->SetDownPressed(true);
-        }
-        else if (event.key.code == KeyLane3)
-        {
-            drawer->ChangeTexture(3);
-            drawer->SetUpPressed(true);
-        }
-        else if (event.key.code == KeyLane4)
-        {
-            drawer->ChangeTexture(4);
-            drawer->SetRightPressed(true);
-        }
-    }
-    else if (event.type == sf::Event::KeyReleased)
-    {
-        if (event.key.code == KeyLane1)
-            drawer->ResetTexture(1);
-        else if (event.key.code == KeyLane2)
-            drawer->ResetTexture(2);
-        else if (event.key.code == KeyLane3)
-            drawer->ResetTexture(3);
-        else if (event.key.code == KeyLane4)
-            drawer->ResetTexture(4);
-
-    }
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == KeyLane1)
+		{
+			drawer->ChangeTexture(1);
+			drawer->SetLeftPressed(true);
+		}
+		else if (event.key.code == KeyLane2)
+		{
+			drawer->ChangeTexture(2);
+			drawer->SetDownPressed(true);
+		}
+		else if (event.key.code == KeyLane3)
+		{
+			drawer->ChangeTexture(3);
+			drawer->SetUpPressed(true);
+		}
+		else if (event.key.code == KeyLane4)
+		{
+			drawer->ChangeTexture(4);
+			drawer->SetRightPressed(true);
+		}
+	}
+	else if (event.type == sf::Event::KeyReleased)
+	{
+		if (event.key.code == KeyLane1)
+			drawer->ResetTexture(1);
+		else if (event.key.code == KeyLane2)
+			drawer->ResetTexture(2);
+		else if (event.key.code == KeyLane3)
+			drawer->ResetTexture(3);
+		else if (event.key.code == KeyLane4)
+			drawer->ResetTexture(4);
+	}
 }
 ;
