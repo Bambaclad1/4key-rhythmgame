@@ -2,6 +2,7 @@
 
 Drawer::Drawer()
 {
+	std::cout << "Drawer loaded!\n";
 }
 
 void Drawer::SetupTextures()
@@ -70,12 +71,16 @@ void Drawer::SetupText()
 	Score.setPosition(100, 250);
 }
 
-void Drawer::Draw(sf::RenderWindow& MainWindow)
+void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 {
 	MainWindow.draw(arrowUp);
 	MainWindow.draw(arrowDown);
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
+
+	arrowClass.InitSprite();
+	arrowClass.Update(deltaTime);
+	arrowClass.testsong(MainWindow);
 
 	MainWindow.draw(arrow1);
 	MainWindow.draw(arrow2);
@@ -113,7 +118,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	auto drawBoundingBox = [&](const sf::Sprite& arrow) {
 		boundingBox.setPosition(arrow.getGlobalBounds().left, arrow.getGlobalBounds().top);
 		MainWindow.draw(boundingBox);
-		};
+	};
 
 	drawBoundingBox(arrowUp);
 	drawBoundingBox(arrowDown);

@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Game.h"
+#include "Arrow.h"
 #include "Drawer.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
@@ -55,7 +56,7 @@ int main()
 
 		MainWindow.clear(sf::Color(137, 137, 137));
 
-		drawer.Draw(MainWindow); // base arrows check for input
+		drawer.Draw(MainWindow, deltaTime); // base arrows check for input
 
 		drawer.BoundingBox(MainWindow);
 

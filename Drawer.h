@@ -2,14 +2,21 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <map>
+#include "Arrow.h"
 #include <iostream>
+
+class Arrow;
+
 class Drawer
 {
 public:
 	Drawer();
+
+	Arrow arrowClass;
+
 	void SetupTextures();
 	void SetupText();
-	void Draw(sf::RenderWindow& MainWindow);
+	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
 	void Update(float deltaTime);
 	void BoundingBox(sf::RenderWindow& MainWindow);
 
@@ -26,7 +33,10 @@ public:
 	void SetUpPressed(bool pressed) { UpPressed = pressed; }
 	void SetRightPressed(bool pressed) { RightPressed = pressed; }
 
+
 private:
+
+
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
 	sf::Texture arrowLeftText;
@@ -72,4 +82,5 @@ private:
 	bool DownIsTrue = true;
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
+
 };
