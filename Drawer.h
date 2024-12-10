@@ -14,9 +14,9 @@ public:
 
 	Arrow arrowClass;
 
+	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
 	void SetupTextures();
 	void SetupText();
-	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
 	void Update(float deltaTime);
 	void BoundingBox(sf::RenderWindow& MainWindow);
 
@@ -33,9 +33,7 @@ public:
 	void SetUpPressed(bool pressed) { UpPressed = pressed; }
 	void SetRightPressed(bool pressed) { RightPressed = pressed; }
 
-
 private:
-
 
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
@@ -82,5 +80,4 @@ private:
 	bool DownIsTrue = true;
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
-
 };

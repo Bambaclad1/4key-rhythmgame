@@ -5,6 +5,21 @@ Drawer::Drawer()
 	std::cout << "Drawer loaded!\n";
 }
 
+void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
+{
+	MainWindow.draw(arrowUp);
+	MainWindow.draw(arrowDown);
+	MainWindow.draw(arrowLeft);
+	MainWindow.draw(arrowRight);
+
+	arrowClass.testsong(MainWindow);
+	//arrowClass.BoundingBoxCollision(MainWindow);
+	arrowClass.Update(MainWindow, deltaTime);
+
+	MainWindow.draw(scoreJudge);
+	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
+}
+
 void Drawer::SetupTextures()
 {
 	if (!arrowUpText.loadFromFile("resources/gamesprites/arrowUpD.png") ||
@@ -47,6 +62,8 @@ void Drawer::SetupTextures()
 	arrow2.setTexture(arrowDownFText);
 	arrow3.setTexture(arrowLeftFText);
 	arrow4.setTexture(arrowRightFText);
+
+	arrowClass.InitSprite();
 }
 
 void Drawer::SetupText()
@@ -69,25 +86,6 @@ void Drawer::SetupText()
 	Score.setCharacterSize(60);
 	Score.setFillColor(sf::Color::Magenta);
 	Score.setPosition(100, 250);
-}
-
-void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
-{
-	MainWindow.draw(arrowUp);
-	MainWindow.draw(arrowDown);
-	MainWindow.draw(arrowLeft);
-	MainWindow.draw(arrowRight);
-
-	arrowClass.InitSprite();
-	arrowClass.Update(deltaTime);
-	arrowClass.testsong(MainWindow);
-
-	MainWindow.draw(arrow1);
-	MainWindow.draw(arrow2);
-	MainWindow.draw(arrow3);
-	MainWindow.draw(arrow4);
-	MainWindow.draw(scoreJudge);
-	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
 }
 
 void Drawer::Update(float deltaTime)
@@ -118,7 +116,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	auto drawBoundingBox = [&](const sf::Sprite& arrow) {
 		boundingBox.setPosition(arrow.getGlobalBounds().left, arrow.getGlobalBounds().top);
 		MainWindow.draw(boundingBox);
-	};
+		};
 
 	drawBoundingBox(arrowUp);
 	drawBoundingBox(arrowDown);
@@ -128,7 +126,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	drawBoundingBox(arrow2);
 	drawBoundingBox(arrow3);
 	drawBoundingBox(arrow4);
-
 	if (timerStarted) {
 		float elapsed = timer.getElapsedTime().asSeconds();
 		if (elapsed <= 0.1f) {
