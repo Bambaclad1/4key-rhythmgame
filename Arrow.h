@@ -21,9 +21,9 @@
 	*/
 class Arrow : public sf::Drawable, public sf::Transformable {
 public:
-	ArrowDirection::dirs currentDirection;
+	ArrowDirection currentDirection;
 
-	Arrow();
+	Arrow(ArrowDirection aDirection);
 	~Arrow();
 	void InitSprite();
 	void Update(sf::RenderWindow& MainWindow, float deltaTime);
@@ -35,7 +35,8 @@ private:
 	sf::Clock GameTimer;
 
 	ArrowDirection arrowdirection;
-	std::map<float, ArrowDirection::dirs> arrows;  // int = lane, float = timing
+	ArrowDirection direction;
+	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
 
 	int BPM = 0;
@@ -53,8 +54,7 @@ private:
 	bool DebugRanOnce = true;
 
 	sf::RenderWindow test;
-	ArrowDirection::dirs direction;
 
-	std::pair<float, ArrowDirection::dirs> GetNextAction();
+	std::pair<float, ArrowDirection> GetNextAction();
 
 };

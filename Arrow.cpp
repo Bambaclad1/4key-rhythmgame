@@ -1,8 +1,30 @@
 #include "Arrow.h"
 
-Arrow::Arrow() : speed(500.0f)  // Use member initializer to set speed.
+Arrow::Arrow(ArrowDirection aDirection) : speed(500.0f)  // Use member initializer to set speed.
 {
 	std::cout << "Arrow loaded!\n";
+
+	switch (aDirection)
+	{
+	case ArrowDirection::LEFT:
+		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setPosition(450, 700);
+		break;
+	case ArrowDirection::UP:
+		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setPosition(450, 700);
+		break;
+	case ArrowDirection::DOWN:
+		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setPosition(450, 700);
+		break;
+	case ArrowDirection::RIGHT:
+		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setPosition(450, 700);
+		break;
+	default:
+		break;
+	}
 }
 
 Arrow::~Arrow()
