@@ -46,7 +46,7 @@ int main()
 		sf::Event event;
 		MainWindow.setKeyRepeatEnabled(false);
 		while (MainWindow.pollEvent(event))
-		{
+		{	
 			game.Management(MainWindow, event);
 			game.KeyboardHandler(MainWindow, event);
 		}

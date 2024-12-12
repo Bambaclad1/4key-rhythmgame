@@ -30,7 +30,7 @@ void Arrow::InitSprite() {
 	/*arrowLeft.setPosition(450, 700);
 	arrowDown.setPosition(600, 700);
 	arrowUp.setPosition(750, 700);
-	arrowRight.setPosition(900, 700);*/
+	arrowRight.setPosition(900, 700);*/ 
 
 	GameTimer.restart();
 
