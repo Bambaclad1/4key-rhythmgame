@@ -155,8 +155,6 @@
     <ClCompile Include="TitleScreen.cpp" />
     <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Song.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="ArrowDirection.h" />
     <ClInclude Include="Controller.h" />
