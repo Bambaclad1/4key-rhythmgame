@@ -13,7 +13,6 @@ void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 	MainWindow.draw(arrowRight);
 
 	arrowClass.testsong(MainWindow);
-	//arrowClass.BoundingBoxCollision(MainWindow);
 	arrowClass.Update(MainWindow, deltaTime);
 
 	MainWindow.draw(scoreJudge);
@@ -55,14 +54,6 @@ void Drawer::SetupTextures()
 	arrowLeft.setTexture(arrowLeftText);
 	arrowRight.setTexture(arrowRightText);
 
-	arrow1.setScale(0.5f, 0.5f), arrow2.setScale(0.5f, 0.5f), arrow3.setScale(0.5f, 0.5f), arrow4.setScale(0.5f, 0.5f);
-	arrow1.setPosition(750, 0), arrow2.setPosition(600, 0), arrow3.setPosition(450, 0), arrow4.setPosition(900, 0);
-
-	arrow1.setTexture(arrowUpFText);
-	arrow2.setTexture(arrowDownFText);
-	arrow3.setTexture(arrowLeftFText);
-	arrow4.setTexture(arrowRightFText);
-
 	arrowClass.InitSprite();
 }
 
@@ -92,15 +83,15 @@ void Drawer::Update(float deltaTime)
 {
 	const float speed = 800.0f;
 
-	arrow1.move(0, speed * deltaTime);
-	arrow2.move(0, speed * deltaTime);
-	arrow3.move(0, speed * deltaTime);
-	arrow4.move(0, speed * deltaTime);
+	//arrow1.move(0, speed * deltaTime);
+	//arrow2.move(0, speed * deltaTime);
+	//arrow3.move(0, speed * deltaTime);
+	//arrow4.move(0, speed * deltaTime);
 
-	if (arrow1.getPosition().y > 900) arrow1.setPosition(750, -150), UpIsTrue = true;
-	if (arrow2.getPosition().y > 900) arrow2.setPosition(600, -150), DownIsTrue = true;
-	if (arrow3.getPosition().y > 900) arrow3.setPosition(450, -150), LeftIsTrue = true;
-	if (arrow4.getPosition().y > 900) arrow4.setPosition(900, -150), RightIsTrue = true;
+	//if (arrow1.getPosition().y > 900) arrow1.setPosition(750, -150), UpIsTrue = true;
+	//if (arrow2.getPosition().y > 900) arrow2.setPosition(600, -150), DownIsTrue = true;
+	//if (arrow3.getPosition().y > 900) arrow3.setPosition(450, -150), LeftIsTrue = true;
+	//if (arrow4.getPosition().y > 900) arrow4.setPosition(900, -150), RightIsTrue = true;
 
 	float currentTimeStamp = timeFrame.getElapsedTime().asMilliseconds();
 }
@@ -122,10 +113,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	drawBoundingBox(arrowDown);
 	drawBoundingBox(arrowLeft);
 	drawBoundingBox(arrowRight);
-	drawBoundingBox(arrow1);
-	drawBoundingBox(arrow2);
-	drawBoundingBox(arrow3);
-	drawBoundingBox(arrow4);
 	if (timerStarted) {
 		float elapsed = timer.getElapsedTime().asSeconds();
 		if (elapsed <= 0.1f) {

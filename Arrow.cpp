@@ -1,9 +1,9 @@
 #include "Arrow.h"
 
-Arrow::Arrow(ArrowDirection aDirection) : speed(500.0f)  // Use member initializer to set speed.
+Arrow::Arrow(ArrowDirection aDirection) : speed(500.0f), direction(aDirection)  // Use member initializer to set speed.
 {
 	std::cout << "Arrow loaded!\n";
-
+	InitSprite();
 	switch (aDirection)
 	{
 	case ArrowDirection::LEFT:
@@ -11,20 +11,21 @@ Arrow::Arrow(ArrowDirection aDirection) : speed(500.0f)  // Use member initializ
 		arrowSprite.setPosition(450, 700);
 		break;
 	case ArrowDirection::UP:
-		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setTexture(arrowUpFalling);
 		arrowSprite.setPosition(450, 700);
 		break;
 	case ArrowDirection::DOWN:
-		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setTexture(arrowDownFalling);
 		arrowSprite.setPosition(450, 700);
 		break;
 	case ArrowDirection::RIGHT:
-		arrowSprite.setTexture(arrowLeftFalling);
+		arrowSprite.setTexture(arrowRightFalling);
 		arrowSprite.setPosition(450, 700);
 		break;
 	default:
 		break;
 	}
+	GameTimer.restart();
 }
 
 Arrow::~Arrow()
@@ -42,11 +43,10 @@ void Arrow::InitSprite() {
 	// Textures loaded? Cool, let's get on going.
 
 	// Lets make them smooth first though, otherwise they will appear "mushy"
-	arrowLeftFalling.setSmooth(true), arrowUpFalling.setSmooth(true), arrowDownFalling.setSmooth(true), arrowRightFalling.setSmooth(true);
-
-	//Done! Now lets tell the code what the properties of the arrow are!
-	arrowSprite.setPosition(450, 100);
-	arrowSprite.setTexture(arrowLeftFalling);
+	arrowLeftFalling.setSmooth(true);
+	arrowUpFalling.setSmooth(true); 
+	arrowDownFalling.setSmooth(true);
+	arrowRightFalling.setSmooth(true);
 
 	arrowSprite.setScale(0.5f, 0.5f);
 	/*arrowLeft.setPosition(450, 700);
@@ -54,7 +54,7 @@ void Arrow::InitSprite() {
 	arrowUp.setPosition(750, 700);
 	arrowRight.setPosition(900, 700);*/
 
-	GameTimer.restart();
+	
 
 }
 
@@ -62,34 +62,7 @@ void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime)
 {
 
 	arrowSprite.move(0, speed * deltaTime);
-
 	float mss = GameTimer.getElapsedTime().asSeconds();
-	std::cout << mss;
-	std::pair<float, ArrowDirection::dirs> nextAction = GetNextAction();
-	if (mss > nextAction.first) {
-		std::cout << "Hier komt de arrow spawn, de arrow is" << std::endl;
-		if (nextAction.second == 1) {
-			std::cout << "left!";
-			arrowSprite.setTexture(arrowLeftFalling);
-			arrowSprite.setPosition(450, 700);
-		}
-		else if (nextAction.second == 2) {
-			std::cout << "up!";
-			arrowSprite.setTexture(arrowUpFalling);
-			arrowSprite.setPosition(600, 700);
-		}
-		else if (nextAction.second == 3) {
-			std::cout << "down!";
-			arrowSprite.setTexture(arrowDownFalling);
-			arrowSprite.setPosition(750, 700);
-		}
-		else if (nextAction.second == 4) {
-			std::cout << "right!";
-			arrowSprite.setTexture(arrowRightFalling);
-			arrowSprite.setPosition(900, 700);
-		}
-		nextAction = GetNextAction();
-	}
 	MainWindow.draw(arrowSprite);
 }
 
@@ -132,23 +105,4 @@ void Arrow::testsong(sf::RenderWindow& MainWindow)
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(arrowSprite, states);
-}
-
-std::pair<float, ArrowDirection::dirs> Arrow::GetNextAction()
-{
-	sf::Time elapsed1 = GameTimer.getElapsedTime();
-	// 1 seconde = 100 milliseconds = 1000 microseconds
-		//std::cout << elapsed1.asSeconds() << std::endl;
-	std::pair<float, ArrowDirection::dirs> nextAction;
-	float previous = 0.0f;
-	for (auto const& [key, val] : arrows)
-	{
-		if (key > previous) {
-			nextAction = { key, val };
-			previous = key;
-			break;
-		}
-	}
-
-	return nextAction;
 }

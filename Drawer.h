@@ -5,14 +5,11 @@
 #include "Arrow.h"
 #include <iostream>
 
-class Arrow;
 
 class Drawer
 {
 public:
 	Drawer();
-
-	Arrow arrowClass;
 
 	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
 	void SetupTextures();
@@ -45,20 +42,10 @@ private:
 	sf::Texture arrowLeftKDText;
 	sf::Texture arrowRightKDText;
 
-	sf::Texture arrowUpFText; // Falling down arrows (instantiate them.)
-	sf::Texture arrowDownFText;
-	sf::Texture arrowLeftFText;
-	sf::Texture arrowRightFText;
-
 	sf::Sprite arrowUp;
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
-
-	sf::Sprite arrow1;	//lekkere benaming dit
-	sf::Sprite arrow2;	//down
-	sf::Sprite arrow3;	//left
-	sf::Sprite arrow4;	//right
 
 	sf::Font nerdfont;
 	sf::Text text;

@@ -34,7 +34,6 @@ public:
 private:
 	sf::Clock GameTimer;
 
-	ArrowDirection arrowdirection;
 	ArrowDirection direction;
 	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
@@ -54,7 +53,5 @@ private:
 	bool DebugRanOnce = true;
 
 	sf::RenderWindow test;
-
-	std::pair<float, ArrowDirection> GetNextAction();
 
 };
