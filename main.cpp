@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Arrow.h"
 #include "Drawer.h"
+#include "TitleScreen.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
 				Commit 3-12-2024 | 2 - Target: 5-12-2024
@@ -36,11 +37,13 @@ int main()
 {
 	Drawer drawer;
 	Game game(drawer);
+	TitleScreen titlescreen;
 	sf::Clock clock;
 	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG ver?");
 
 	drawer.SetupTextures();
 	drawer.SetupText();
+
 	while (MainWindow.isOpen())
 	{
 		sf::Event event;
@@ -57,9 +60,11 @@ int main()
 
 		MainWindow.clear(sf::Color(137, 137, 137));
 
-		drawer.Draw(MainWindow, deltaTime); // base arrows check for input
+		titlescreen.StartingScreen();
 
-		drawer.BoundingBox(MainWindow);
+		//drawer.Draw(MainWindow, deltaTime); // base arrows check for input
+
+		//drawer.BoundingBox(MainWindow);
 
 		MainWindow.display();
 	}
