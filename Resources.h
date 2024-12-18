@@ -4,7 +4,6 @@
 
 class Resources
 {
-
 public:
 	enum Asset {
 		DownArrow,
@@ -23,18 +22,16 @@ public:
 
 public:
 	static Resources* GetInstance();
-	const sf::Texture* GetTexture(Resources::Asset assetToGet);
-	void MakeTexturesSmooth();
-	void Load(std::string aPath);
 
 private:
 	Resources();
 	~Resources();
 	void Load();
-	std::map < Resources::Asset, sf::Texture*> textures;
+	const sf::Texture* GetTexture(Resources::Asset assetToGet) const;
+	std::map < Resources::Asset, sf::Texture> textures;
 	static Resources* instance;
 
-
+	
 	
 
 };

@@ -3,7 +3,6 @@
 #include <SFML/Window.hpp>
 #include <map>
 #include "Arrow.h"
-#include "Resources.h"
 #include <iostream>
 
 
@@ -32,20 +31,21 @@ public:
 	void SetRightPressed(bool pressed) { RightPressed = pressed; }
 
 private:
-	const sf::Texture* arrowUpText; // Normal Arrows, bar arrows.
-	const sf::Texture arrowDownText;
-	const sf::Texture arrowLeftText;
-	const sf::Texture arrowRightText;
 
-	const sf::Texture* arrowUpKDText; // Pressed down arrows.
-	const sf::Texture* arrowDownKDText;
-	const sf::Texture* arrowRightKDText; 
-	const sf::Texture* arrowLeftKDText;  
+	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
+	sf::Texture arrowDownText;
+	sf::Texture arrowLeftText;
+	sf::Texture arrowRightText;
 
-	 sf::Sprite arrowUp;
-	 sf::Sprite arrowDown;
-	 sf::Sprite arrowLeft;
-	 sf::Sprite arrowRight;
+	sf::Texture arrowUpKDText; // Pressed down arrows.
+	sf::Texture arrowDownKDText;
+	sf::Texture arrowLeftKDText;
+	sf::Texture arrowRightKDText;
+
+	sf::Sprite arrowUp;
+	sf::Sprite arrowDown;
+	sf::Sprite arrowLeft;
+	sf::Sprite arrowRight;
 
 	sf::Font nerdfont;
 	sf::Text text;

@@ -2,17 +2,6 @@
 
 Drawer::Drawer()
 {
-
-	arrowUpKDText = Resources::GetInstance()->GetTexture(Resources::UpArrowController);
-	arrowDownKDText = Resources::GetInstance()->GetTexture(Resources::DownArrowController);
-	arrowLeftKDText = Resources::GetInstance()->GetTexture(Resources::LeftArrowController);
-	arrowRightKDText = Resources::GetInstance()->GetTexture(Resources::RightArrowController);
-	arrowUpText = Resources::GetInstance()->GetTexture(Resources::UpArrow);
-	sf::Texture* t;
-	t = new sf::Texture();
-	sf::Texture s;
-	*t = s;
-
 	std::cout << "Drawer loaded!\n";
 }
 
@@ -23,8 +12,8 @@ void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
 
-	//arrowClass.testsong(MainWindow);
-	//arrowClass.Update(MainWindow, deltaTime);
+	arrowClass.testsong(MainWindow);
+	arrowClass.Update(MainWindow, deltaTime);
 
 	MainWindow.draw(scoreJudge);
 	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
@@ -32,17 +21,21 @@ void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 
 void Drawer::SetupTextures()
 {
-	/*if (!arrowUpText.loadFromFile("resources/gamesprites/blanco.png") ||
+	if (!arrowUpText.loadFromFile("resources/gamesprites/arrowUpD.png") ||
 		!arrowDownText.loadFromFile("resources/gamesprites/arrowDownD.png") ||
 		!arrowLeftText.loadFromFile("resources/gamesprites/arrowLeftD.png") ||
-		!arrowRightText.loadFromFile("resources/gamesprites/arrowRightD.png"))
+		!arrowRightText.loadFromFile("resources/gamesprites/arrowRightD.png") ||
+		!arrowUpKDText.loadFromFile("resources/gamesprites/arrowUpKD.png") ||
+		!arrowDownKDText.loadFromFile("resources/gamesprites/arrowDownKD.png") ||
+		!arrowLeftKDText.loadFromFile("resources/gamesprites/arrowLeftKD.png") ||
+		!arrowRightKDText.loadFromFile("resources/gamesprites/arrowRightKD.png"))
 
 	{
 		std::cout << "Error! Unable to load Drawer.h files! Check resources/gamesprites if the files are there!" << std::endl;
-	}*/
+	}
 
-
-	//arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
+	arrowUpText.setSmooth(true), arrowDownText.setSmooth(true), arrowLeftText.setSmooth(true), arrowRightText.setSmooth(true);
+	arrowUpKDText.setSmooth(true), arrowDownKDText.setSmooth(true), arrowLeftKDText.setSmooth(true), arrowRightKDText.setSmooth(true);
 
 	arrowLeft.setPosition(450, 700);
 	arrowLeft.setScale(0.5f, 0.5f);
@@ -56,12 +49,12 @@ void Drawer::SetupTextures()
 	arrowRight.setPosition(900, 700);
 	arrowRight.setScale(0.5f, 0.5f);
 
-	//arrowUp.setTexture(arrowUpText);
+	arrowUp.setTexture(arrowUpText);
 	arrowDown.setTexture(arrowDownText);
 	arrowLeft.setTexture(arrowLeftText);
 	arrowRight.setTexture(arrowRightText);
 
-	//arrowClass.InitSprite();
+	arrowClass.InitSprite();
 }
 
 void Drawer::SetupText()
@@ -105,7 +98,7 @@ void Drawer::Update(float deltaTime)
 
 void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 {
-	/*sf::RectangleShape boundingBox;
+	sf::RectangleShape boundingBox;
 	boundingBox.setSize(sf::Vector2f(arrowUp.getGlobalBounds().width, arrowUp.getGlobalBounds().height));
 	boundingBox.setOutlineColor(sf::Color::Red);
 	boundingBox.setOutlineThickness(1.0f);
@@ -358,23 +351,21 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	}
 
 	MainWindow.draw(text);
-	*/
-	//unused
 }
 
 void Drawer::ChangeTexture(int lane)
 {
 	if (lane == 1) {
-		arrowLeft.setTexture(*arrowLeftKDText);
+		arrowLeft.setTexture(arrowLeftKDText);
 	}
 	else if (lane == 2) {
-		arrowDown.setTexture(*arrowDownKDText);
+		arrowDown.setTexture(arrowDownKDText);
 	}
 	else if (lane == 3) {
-		arrowUp.setTexture(*arrowUpKDText);
+		arrowUp.setTexture(arrowUpKDText);
 	}
 	else if (lane == 4) {
-		arrowRight.setTexture(*arrowRightKDText);
+		arrowRight.setTexture(arrowRightKDText);
 	}
 }
 void Drawer::ResetTexture(int lane)
@@ -388,7 +379,7 @@ void Drawer::ResetTexture(int lane)
 		arrowDown.setTexture(arrowDownText);
 		break;
 	case 3:
-		arrowUp.setTexture(*arrowUpText);
+		arrowUp.setTexture(arrowUpText);
 		break;
 	case 4:
 		arrowRight.setTexture(arrowRightText);

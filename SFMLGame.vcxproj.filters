@@ -34,8 +34,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TitleScreen.cpp">
-	</ClCompile>
-	<ClCompile Include="Song.cpp">
+    <ClCompile Include="Song.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Controller.cpp">
@@ -69,8 +68,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TitleScreen.h">
-      <Filter>Header Files</Filter>
-   </ClInclude>
     <ClInclude Include="Song.h">
       <Filter>Header Files</Filter>
     </ClInclude>

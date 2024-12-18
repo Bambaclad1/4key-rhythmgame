@@ -39,7 +39,7 @@ int main()
 	Game game(drawer);
 	TitleScreen titlescreen;
 	sf::Clock clock;
-	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4Key Rhythm Game DEBUG - J-Branch");
+	sf::RenderWindow MainWindow(sf::VideoMode(1600, 900), "4key rhythm game - DEBUG ver?");
 
 	drawer.SetupTextures();
 	drawer.SetupText();
@@ -60,11 +60,11 @@ int main()
 
 		MainWindow.clear(sf::Color(137, 137, 137));
 
-		//titlescreen.StartingScreen();
+		titlescreen.StartingScreen();
 
-		drawer.Draw(MainWindow, deltaTime); // base arrows check for input
+		//drawer.Draw(MainWindow, deltaTime); // base arrows check for input
 
-		drawer.BoundingBox(MainWindow);
+		//drawer.BoundingBox(MainWindow);
 
 		MainWindow.display();
 	}
