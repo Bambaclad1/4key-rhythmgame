@@ -1,22 +1,39 @@
-# 4-Key Rhythm Game
-#### An Rhythm game made in SFML.
-[![4klogo](https://github.com/Bambaclad1/4key-rhythmgame/blob/master/4k-rg.png?raw=true)](https://github.com/Bambaclad1/4key-rhythmgame)[![SFML logo](https://www.sfml-dev.org/images/logo.png)](https://www.sfml-dev.org) 
+[![SFML logo](https://www.sfml-dev.org/images/logo.png)](https://www.sfml-dev.org)
 
+# SFML — Simple and Fast Multimedia Library
 
-# Contents
-- Requirements
-- Introduction
-- Gameplay
-- Mechanics
-- Scripts
-- Conclusion
-- Dev Notes
+SFML is a simple, fast, cross-platform and object-oriented multimedia API. It provides access to windowing, graphics, audio and network. It is written in C++, and has bindings for various languages such as C, .Net, Ruby, Python.
 
-# Requirements
-This project has been developed on a machine running Windows 10 23H2 in Visual Studio Community 2022. It's compiled for Windows 10/11, but you should be able to compile it to your own platform.
-Specifications wise, this game is really not that intensive. It uses a small amount of CPU, GPU, and RAM. Should even run on a pentium in my opinion.
-# Introduction
-Welcome to **4-Key Rhythm Game**. This is an Rhythm game with 4 lanes inspired by games such as osu!mania, Quaver, DDR, Robeats! and StepManiaX! If you're not familiar with that, that is no problem! The game introduces 4 lanes, each lane corrosponding to an arrow. Your goal is to click the falling arrow on the right timing when it overlaps the existing arrow on the bottom. The arrows will fall on the rhythm of the song which you will be hearing, so playing with audio will be advised!
+## Authors
 
+  - Laurent Gomila — main developer (laurent@sfml-dev.org)
+  - Marco Antognini — OS X developer (hiura@sfml-dev.org)
+  - Jonathan De Wachter — Android developer (dewachter.jonathan@gmail.com)
+  - Jan Haller (bromeon@sfml-dev.org)
+  - Stefan Schindler (tank@sfml-dev.org)
+  - Lukas Dürrenberger (eXpl0it3r@sfml-dev.org)
+  - binary1248 (binary1248@hotmail.com)
+  - Artur Moreira (artturmoreira@gmail.com)
+  - Mario Liebisch (mario@sfml-dev.org)
+  - And many other members of the SFML community
 
-### More to be coming soon...
+## Download
+
+You can get the latest official release on [SFML's website](https://www.sfml-dev.org/download.php). You can also get the current development version from the [Git repository](https://github.com/SFML/SFML).
+
+## Install
+
+Follow the instructions of the [tutorials](https://www.sfml-dev.org/tutorials/), there is one for each platform/compiler that SFML supports.
+
+## Learn
+
+There are several places to learn SFML:
+
+  * The [official tutorials](https://www.sfml-dev.org/tutorials/)
+  * The [online API documentation](https://www.sfml-dev.org/documentation/)
+  * The [community wiki](https://github.com/SFML/SFML/wiki/)
+  * The [community forum](https://en.sfml-dev.org/forums/) ([French](https://fr.sfml-dev.org/forums/))
+
+## Contribute
+
+SFML is an open-source project, and it needs your help to go on growing and improving. If you want to get involved and suggest some additional features, file a bug report or submit a patch, please have a look at the [contribution guidelines](https://www.sfml-dev.org/contribute.php).

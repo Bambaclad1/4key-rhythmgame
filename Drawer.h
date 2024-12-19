@@ -4,16 +4,18 @@
 #include <map>
 #include "Arrow.h"
 #include <iostream>
-
+#include <vector>
 
 class Drawer
 {
 public:
 	Drawer();
 
-	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
+	Arrow arrowClass;
+
 	void SetupTextures();
 	void SetupText();
+	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
 	void Update(float deltaTime);
 	void BoundingBox(sf::RenderWindow& MainWindow);
 
@@ -30,8 +32,9 @@ public:
 	void SetUpPressed(bool pressed) { UpPressed = pressed; }
 	void SetRightPressed(bool pressed) { RightPressed = pressed; }
 
-private:
 
+private:
+	sf::RenderStates statesdummy;
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
 	sf::Texture arrowLeftText;
@@ -46,6 +49,8 @@ private:
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
+
+	std::vector<sf::Sprite> afallingarrows;
 
 	sf::Font nerdfont;
 	sf::Text text;
@@ -67,4 +72,5 @@ private:
 	bool DownIsTrue = true;
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
+
 };

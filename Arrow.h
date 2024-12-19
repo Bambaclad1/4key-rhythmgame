@@ -4,6 +4,7 @@
 #include <map>
 #include "ArrowDirection.h"
 #include <iostream>
+#include <set>
 /*
 					Idea for deploying well managed arrows!
 					---------------------------------------
@@ -21,22 +22,25 @@
 	*/
 class Arrow : public sf::Drawable, public sf::Transformable {
 public:
-	ArrowDirection currentDirection;
-
-	Arrow(ArrowDirection aDirection);
+	Arrow(); 
 	~Arrow();
 	void InitSprite();
 	void Update(sf::RenderWindow& MainWindow, float deltaTime);
-	void BoundingBoxCollision(sf::RenderWindow& MainWindow);
 	void testsong(sf::RenderWindow& MainWindow);
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	virtual void draw(sf::RenderTarget& MainWindow, sf::RenderStates states) const;
+
+	std::vector<sf::Sprite> GetVectorArrows() {
+		return fallingarrows;
+	}
 
 private:
 	sf::Clock GameTimer;
 
-	ArrowDirection direction;
-	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing
+	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing, bool is has dropped
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
+	std::set<float> spawnedArrows;  
+
+
 
 	int BPM = 0;
 	float speed = 0;
@@ -48,10 +52,15 @@ private:
 	sf::Texture arrowDownFalling;
 	sf::Texture arrowRightFalling;
 
+	std::vector<sf::Sprite> fallingarrows; // Vector of arrows that are falling
 	sf::Sprite arrowSprite;
 
 	bool DebugRanOnce = true;
 
 	sf::RenderWindow test;
+	ArrowDirection direction; 
+
+	std::pair<float, ArrowDirection> GetNextAction();
+
 
 };
