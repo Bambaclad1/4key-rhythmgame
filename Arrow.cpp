@@ -129,12 +129,12 @@ void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 
 
-std::pair<float, ArrowDirection::dirs> Arrow::GetNextAction()
+std::pair<float, ArrowDirection> Arrow::GetNextAction()
 {
 	sf::Time elapsed1 = GameTimer.getElapsedTime();
 	// 1 seconde = 100 milliseconds = 1000 microseconds
 		//std::cout << elapsed1.asSeconds() << std::endl;
-	std::pair<float, ArrowDirection::dirs> nextAction;
+	std::pair<float, ArrowDirection> nextAction;
 	float previous = 0.0f;
 	for (auto const& [key, val] : arrows)
 	{

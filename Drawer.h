@@ -4,7 +4,7 @@
 #include <map>
 #include "Arrow.h"
 #include <iostream>
-
+#include <vector>
 
 class Drawer
 {
@@ -34,8 +34,7 @@ public:
 
 
 private:
-
-
+	sf::RenderStates statesdummy;
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
 	sf::Texture arrowLeftText;
@@ -50,6 +49,8 @@ private:
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
+
+	std::vector<sf::Sprite> afallingarrows;
 
 	sf::Font nerdfont;
 	sf::Text text;

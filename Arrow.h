@@ -22,8 +22,7 @@
 	*/
 class Arrow : public sf::Drawable, public sf::Transformable {
 public:
-	ArrowDirection::dirs currentDirection;
-	Arrow();
+	Arrow(); 
 	~Arrow();
 	void InitSprite();
 	void Update(sf::RenderWindow& MainWindow, float deltaTime);
@@ -37,8 +36,7 @@ public:
 private:
 	sf::Clock GameTimer;
 
-	ArrowDirection arrowdirection;
-	std::map<float, ArrowDirection::dirs> arrows;  // int = lane, float = timing, bool is has dropped
+	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing, bool is has dropped
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
 	std::set<float> spawnedArrows;  
 
@@ -54,20 +52,15 @@ private:
 	sf::Texture arrowDownFalling;
 	sf::Texture arrowRightFalling;
 
-	std::vector<sf::Sprite> fallingarrows; //vector for all the arrows which are falling down
+	std::vector<sf::Sprite> fallingarrows; // Vector of arrows that are falling
 	sf::Sprite arrowSprite;
 
 	bool DebugRanOnce = true;
 
 	sf::RenderWindow test;
-	ArrowDirection::dirs direction;
+	ArrowDirection direction; 
 
-	std::pair<float, ArrowDirection::dirs> GetNextAction();
+	std::pair<float, ArrowDirection> GetNextAction();
 
-	struct ArrowActions {
-		float spawntime;
-		ArrowDirection::dirs direction;
-		bool spawned = false;
-	};
 
 };
