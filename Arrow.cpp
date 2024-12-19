@@ -1,6 +1,6 @@
 #include "Arrow.h"
 
-Arrow::Arrow(ArrowDirection aDirection) : speed(500.0f), direction(aDirection)  // Use member initializer to set speed.
+Arrow::Arrow() : speed(500.0f)  // Use member initializer to set speed.
 {
 	std::cout << "Arrow loaded!\n";
 	InitSprite();
@@ -56,30 +56,45 @@ void Arrow::InitSprite() {
 
 	
 
+	arrow.setPosition(500, 500);
+	arrow.setTexture(arrowLeftFalling);
+	
 }
 
-void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime)
+void Arrow::Update(float deltaTime)
 {
+	const float speed = 500.0f;
 
 	arrowSprite.move(0, speed * deltaTime);
+
 	float mss = GameTimer.getElapsedTime().asSeconds();
+	std::cout << mss;
+	std::pair<float, ArrowDirection::dirs> nextAction = GetNextAction();
+	if (mss > nextAction.first) {
+		std::cout << "Hier komt de arrow spawn, de arrow is" << std::endl;
+		if (nextAction.second == 1) {
+			std::cout << "left!";
+			arrowSprite.setTexture(arrowLeftFalling);
+			arrowSprite.setPosition(450, 700);
+		}
+		else if (nextAction.second == 2) {
+			std::cout << "up!";
+			arrowSprite.setTexture(arrowUpFalling);
+			arrowSprite.setPosition(600, 700);
+		}
+		else if (nextAction.second == 3) {
+			std::cout << "down!";
+			arrowSprite.setTexture(arrowDownFalling);
+			arrowSprite.setPosition(750, 700);
+		}
+		else if (nextAction.second == 4) {
+			std::cout << "right!";
+			arrowSprite.setTexture(arrowRightFalling);
+			arrowSprite.setPosition(900, 700);
+		}
+		nextAction = GetNextAction();
+	}
 	MainWindow.draw(arrowSprite);
-}
-
-void Arrow::BoundingBoxCollision(sf::RenderWindow& MainWindow)
-{
-	sf::RectangleShape boundingBox;
-	boundingBox.setSize(sf::Vector2f(arrowSprite.getGlobalBounds().width, arrowSprite.getGlobalBounds().height));
-	boundingBox.setOutlineColor(sf::Color::Red);
-	boundingBox.setOutlineThickness(1.0f);
-	boundingBox.setFillColor(sf::Color::Transparent);
-
-	auto drawBoundingBox = [&](const sf::Sprite& arrow) {
-		boundingBox.setPosition(arrow.getGlobalBounds().left, arrow.getGlobalBounds().top);
-		MainWindow.draw(boundingBox);
-		};
-
-	drawBoundingBox(arrowSprite);
 }
 
 void Arrow::testsong(sf::RenderWindow& MainWindow)
@@ -105,4 +120,23 @@ void Arrow::testsong(sf::RenderWindow& MainWindow)
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(arrowSprite, states);
+}
+
+std::pair<float, ArrowDirection::dirs> Arrow::GetNextAction()
+{
+	sf::Time elapsed1 = GameTimer.getElapsedTime();
+	// 1 seconde = 100 milliseconds = 1000 microseconds
+		//std::cout << elapsed1.asSeconds() << std::endl;
+	std::pair<float, ArrowDirection::dirs> nextAction;
+	float previous = 0.0f;
+	for (auto const& [key, val] : arrows)
+	{
+		if (key > previous) {
+			nextAction = { key, val };
+			previous = key;
+			break;
+		}
+	}
+
+	return nextAction;
 }

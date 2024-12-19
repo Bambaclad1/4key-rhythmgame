@@ -15,7 +15,6 @@
 		* Arrow class
 		* Give it attributes such as position and stuff
 		* Make it move down and stuff
-		* make collision work neatly and the combo bring over
 		* Make a class for every map
 		* That, just get easy map eidigtng and make the
 		* arroww work w it
@@ -31,7 +30,7 @@
 			sf::Sprite arrow1;	// Left
 			sf::Sprite arrow2;	// Up
 			sf::Sprite arrow3;	// Down
-			sf::Sprite arrow4;	/sf/ Right
+			sf::Sprite arrow4;	// Right
 */
 int main()
 {
