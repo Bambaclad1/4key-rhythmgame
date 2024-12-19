@@ -4,15 +4,19 @@
 #include <map>
 #include "Arrow.h"
 #include <iostream>
-#include <vector>
+
 
 class Drawer
 {
 public:
 	Drawer();
 
+<<<<<<< HEAD
+	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
+=======
 	Arrow arrowClass;
 
+>>>>>>> parent of 840b9b4 (Currently hit a roadblock. Tryna add a enumerator but it aint working out with the map, Ill get back to this whenever i can, that's about all i have commited for the week. Damn this commit is going to take long, gotta stay dedicated!)
 	void SetupTextures();
 	void SetupText();
 	void Draw(sf::RenderWindow& MainWindow, float deltaTime);
@@ -34,7 +38,8 @@ public:
 
 
 private:
-	sf::RenderStates statesdummy;
+
+
 	sf::Texture arrowUpText; // Normal Arrows, bar arrows.
 	sf::Texture arrowDownText;
 	sf::Texture arrowLeftText;
@@ -49,8 +54,6 @@ private:
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
-
-	std::vector<sf::Sprite> afallingarrows;
 
 	sf::Font nerdfont;
 	sf::Text text;
