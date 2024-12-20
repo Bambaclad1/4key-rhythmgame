@@ -2,7 +2,7 @@
 
 Drawer::Drawer()
 {
-	std::cout << "Drawer loaded!\n";
+	std::cout << "Drawer loaded!" << std::endl;
 }
 
 void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
@@ -107,7 +107,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 	for (int i = 0; i < afallingarrows.size(); i++)
 	{
 		drawBoundingBox(afallingarrows[i]);
-
 	}
 	drawBoundingBox(arrowUp);
 	drawBoundingBox(arrowDown);
@@ -116,19 +115,52 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 
 	MainWindow.draw(boundingBox);
 
-	if (timerStarted) {
-		float elapsed = timer.getElapsedTime().asSeconds();
-		if (elapsed <= 0.1f) {
-			float scaleFactor = 1.0f + elapsed * 3.0f;
-			scoreJudge.setScale(scaleFactor, scaleFactor);
+	for (int i = 0; i < afallingarrows.size();)
+	{
+		bool arrowRemoved = false;
+
+		if (IsLeftPressed()) {
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds()))
+			{
+				std::cout << "clickLeft!\n";
+				SetLeftPressed(false);
+				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
+			}
 		}
-		else {
-			scoreJudge.setScale(1.0f, 1.0f);
-			scoreJudge.setString("");
-			timerStarted = false;
+		else if (IsDownPressed()) {
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds()))
+			{
+				std::cout << "clickDown!\n";
+				SetDownPressed(false);
+				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
+			}
+		}
+		else if (IsUpPressed()) {
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds()))
+			{
+				std::cout << "clickUp!\n";
+				SetUpPressed(false);
+				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
+			}
+		}
+		else if (IsRightPressed()) {
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds()))
+			{
+				std::cout << "clickRight!\n";
+				SetRightPressed(false);
+				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
+			}
+		}
+
+		// Only increment the index if no arrow was removed
+		if (!arrowRemoved) {
+			++i;
 		}
 	}
-
 	MainWindow.draw(text);
 }
 

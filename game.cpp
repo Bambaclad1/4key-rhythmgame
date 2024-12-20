@@ -7,6 +7,8 @@ Game::Game(Drawer& aDrawer)
 	KeyLane2 = sf::Keyboard::F;
 	KeyLane3 = sf::Keyboard::J;
 	KeyLane4 = sf::Keyboard::K;
+
+	std::cout << "Game loaded!";
 }
 
 void Game::Management(sf::RenderWindow& MainWindow, sf::Event& event)

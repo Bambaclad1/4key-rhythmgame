@@ -2,7 +2,13 @@
 
 Arrow::Arrow() : speed(500.0f)  // Use member initializer to set speed.
 {
-	std::cout << "Arrow loaded!\n";
+	nerdfont.loadFromFile("resources/fonts/0xProtoNerdFont-Regular.ttf");
+	timerDebug.setFont(nerdfont);
+	timerDebug.setPosition(0, 50);
+	timerDebug.setFillColor(sf::Color::Black);
+	timerDebug.setCharacterSize(32);
+
+	std::cout << "Arrow loaded!" << std::endl;
 }
 
 Arrow::~Arrow()
@@ -45,7 +51,8 @@ void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime) // ik heb hier
 	}
 
 	float mss = GameTimer.getElapsedTime().asSeconds();
-	std::cout << "Elapsed time: " << mss << " seconds" << std::endl;
+	std::string mssString = std::to_string(mss);
+	timerDebug.setString(mssString);
 
 	// Process the next arrow in the queue if time has passed its spawn time
 	while (!arrows.empty() && mss >= arrows.begin()->first) {
@@ -63,25 +70,21 @@ void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime) // ik heb hier
 			// Process the direction and spawn the arrow
 			switch (direction) {
 			case ArrowDirection::LEFT:
-				std::cout << "left!" << std::endl;
 				arrowComingToVector.setTexture(arrowLeftFalling);
 				arrowComingToVector.setPosition(450, -250);
 				fallingarrows.push_back(arrowComingToVector);
 				break;
 			case ArrowDirection::UP:
-				std::cout << "up!" << std::endl;
 				arrowComingToVector.setTexture(arrowUpFalling);
 				arrowComingToVector.setPosition(750, -250);
 				fallingarrows.push_back(arrowComingToVector);
 				break;
 			case ArrowDirection::DOWN:
-				std::cout << "down!" << std::endl;
 				arrowComingToVector.setTexture(arrowDownFalling);
 				arrowComingToVector.setPosition(600, -250);
 				fallingarrows.push_back(arrowComingToVector);
 				break;
 			case ArrowDirection::RIGHT:
-				std::cout << "right!" << std::endl;
 				arrowComingToVector.setTexture(arrowRightFalling);
 				arrowComingToVector.setPosition(900, -250);
 				fallingarrows.push_back(arrowComingToVector);
@@ -122,6 +125,7 @@ void Arrow::testsong(sf::RenderWindow& MainWindow)
 
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(timerDebug);
 	for (int i = 0; i < fallingarrows.size(); i++)
 	{
 		target.draw(fallingarrows[i]);

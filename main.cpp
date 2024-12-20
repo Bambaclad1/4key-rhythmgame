@@ -6,34 +6,14 @@
 #include "Drawer.h"
 /*
 				NEXT SPRINT - Keep pulling the GIT for changes!
-				Commit 3-12-2024 | 2 - Target: 5-12-2024
-				Oh boy, this is going to be a long sprint.
+				Commit null |  Target: null
 
-		* We now have a idea of how everything is going to work. Epic.
-		* Get a class working
-		* Arrow class
-		* Give it attributes such as position and stuff
-		* Make it move down and stuff
-		* make collision work neatly and the combo bring over
-		* Make a class for every map
-		* That, just get easy map eidigtng and make the
-		* arroww work w it
-*/
-/*                 Cheatsheet!
-
-			sf::Sprite arrow1;	//up
-			sf::Sprite arrow2;	//down
-			sf::Sprite arrow3;	//left
-			sf::Sprite arrow4;	//right
-
-			Rev2
-			sf::Sprite arrow1;	// Left
-			sf::Sprite arrow2;	// Up
-			sf::Sprite arrow3;	// Down
-			sf::Sprite arrow4;	/sf/ Right
+				holiday break update
 */
 int main()
 {
+	std::cout << "Goodluck :)" << std::endl;
+
 	Drawer drawer;
 	Game game(drawer);
 	sf::Clock clock;
@@ -41,6 +21,8 @@ int main()
 
 	drawer.SetupTextures();
 	drawer.SetupText();
+
+
 	while (MainWindow.isOpen())
 	{
 		sf::Event event;
@@ -57,7 +39,7 @@ int main()
 
 		MainWindow.clear(sf::Color(137, 137, 137));
 
-		drawer.Draw(MainWindow, deltaTime); // base arrows check for input
+		drawer.Draw(MainWindow, deltaTime);
 
 		drawer.BoundingBox(MainWindow);
 

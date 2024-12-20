@@ -51,6 +51,9 @@ private:
 	sf::Texture arrowUpFalling;
 	sf::Texture arrowDownFalling;
 	sf::Texture arrowRightFalling;
+	
+	sf::Text timerDebug; // shows the timer of the std::map maps in the game
+	sf::Font nerdfont;
 
 	std::vector<sf::Sprite> fallingarrows; // Vector of arrows that are falling
 	sf::Sprite arrowSprite;
