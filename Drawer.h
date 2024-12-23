@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include <map>
 #include "Arrow.h"
 #include <iostream>
@@ -49,6 +50,7 @@ private:
 	sf::Sprite arrowDown;
 	sf::Sprite arrowLeft;
 	sf::Sprite arrowRight;
+
 
 	std::vector<sf::Sprite> afallingarrows;
 

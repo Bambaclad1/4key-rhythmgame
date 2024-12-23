@@ -74,7 +74,7 @@ void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
 
-	arrowClass.testsong(MainWindow);
+	arrowClass.testsong(MainWindow, 191, deltaTime); // 120 is the BPM of the song
 
 	arrowClass.draw(MainWindow, statesdummy);
 
@@ -122,34 +122,43 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		if (IsLeftPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds())) {
 				std::cout << "clickLeft!\n";
-				SetLeftPressed(false);
 				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
+				afallingarrows.erase(afallingarrows.begin() + i);
+				SetLeftPressed(false);
 			}
 		}
 		else if (IsDownPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds())) {
 				std::cout << "clickDown!\n";
-				SetDownPressed(false);
 				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
+				afallingarrows.erase(afallingarrows.begin() + i);
+				SetDownPressed(false);
+
 			}
 		}
 		else if (IsUpPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds())) {
 				std::cout << "clickUp!\n";
-				SetUpPressed(false);
 				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
+				afallingarrows.erase(afallingarrows.begin() + i);
+				SetUpPressed(false);
 			}
 		}
 		else if (IsRightPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds())) {
 				std::cout << "clickRight!\n";
-				SetRightPressed(false);
 				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
+				afallingarrows.erase(afallingarrows.begin() + i);
+				SetRightPressed(false);
 			}
+		}
+
+		if (!arrowRemoved) {
+			++i;
 		}
 
 		if (RemoveFirstArrowInMap) {
