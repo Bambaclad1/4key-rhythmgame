@@ -2,7 +2,6 @@
 
 Drawer::Drawer()
 {
-	arrowClass = std::make_unique<Arrow>(); // instantiate the arrowClass
 	std::cout << "Drawer loaded! + arrow Class Instantiated!" << std::endl;
 }
 
@@ -69,10 +68,7 @@ void Drawer::SetupText()
 
 void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 {
-	for (int i = 0; i < afallingarrows.size(); i++)
-	{
-		MainWindow.draw(afallingarrows[i]);
-	}
+
 	MainWindow.draw(arrowUp);
 	MainWindow.draw(arrowDown);
 	MainWindow.draw(arrowLeft);
@@ -124,8 +120,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 		bool arrowRemoved = false;
 
 		if (IsLeftPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds()))
-			{
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds())) {
 				std::cout << "clickLeft!\n";
 				SetLeftPressed(false);
 				arrowRemoved = true;
@@ -133,8 +128,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 		}
 		else if (IsDownPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds()))
-			{
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds())) {
 				std::cout << "clickDown!\n";
 				SetDownPressed(false);
 				arrowRemoved = true;
@@ -142,8 +136,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 		}
 		else if (IsUpPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds()))
-			{
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds())) {
 				std::cout << "clickUp!\n";
 				SetUpPressed(false);
 				arrowRemoved = true;
@@ -151,18 +144,12 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			}
 		}
 		else if (IsRightPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds()))
-			{
+			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds())) {
 				std::cout << "clickRight!\n";
 				SetRightPressed(false);
 				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
 			}
-		}
-
-		// Only increment the index if no arrow was removed
-		if (!arrowRemoved) {
-			++i;
 		}
 
 		if (RemoveFirstArrowInMap) {

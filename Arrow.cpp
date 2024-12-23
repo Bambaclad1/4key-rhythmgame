@@ -138,7 +138,10 @@ void Arrow::RemoveFirstArrowInMap()
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(timerDebug);
-
+	for (int i = 0; i < fallingarrows.size(); i++)
+	{
+		//target.draw(fallingarrows[i]);
+	}
 }
 
 
