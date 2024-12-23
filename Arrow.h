@@ -27,16 +27,17 @@ public:
 	void InitSprite();
 	void Update(sf::RenderWindow& MainWindow, float deltaTime);
 	void testsong(sf::RenderWindow& MainWindow);
+	void RemoveFirstArrowInMap();
 	virtual void draw(sf::RenderTarget& MainWindow, sf::RenderStates states) const;
 
 	std::vector<sf::Sprite> GetVectorArrows() {
 		return fallingarrows;
 	}
+	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing, bool is has dropped. made public btw
 
 private:
 	sf::Clock GameTimer;
 
-	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing, bool is has dropped
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
 	std::set<float> spawnedArrows;  
 

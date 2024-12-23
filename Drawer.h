@@ -73,4 +73,6 @@ private:
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
 
+	bool RemoveFirstArrowInMap = false;
+
 };

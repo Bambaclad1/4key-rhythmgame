@@ -2,24 +2,8 @@
 
 Drawer::Drawer()
 {
-	std::cout << "Drawer loaded!" << std::endl;
-}
-
-void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
-{
-	MainWindow.draw(arrowUp);
-	MainWindow.draw(arrowDown);
-	MainWindow.draw(arrowLeft);
-	MainWindow.draw(arrowRight);
-
-	arrowClass.testsong(MainWindow);
-
-	arrowClass.draw(MainWindow, statesdummy);
-
-	arrowClass.Update(MainWindow, deltaTime);
-
-	MainWindow.draw(scoreJudge);
-	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
+	arrowClass = std::make_unique<Arrow>(); // instantiate the arrowClass
+	std::cout << "Drawer loaded! + arrow Class Instantiated!" << std::endl;
 }
 
 void Drawer::SetupTextures()
@@ -83,6 +67,26 @@ void Drawer::SetupText()
 	Score.setPosition(100, 250);
 }
 
+void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
+{
+	for (int i = 0; i < afallingarrows.size(); i++)
+	{
+		MainWindow.draw(afallingarrows[i]);
+	}
+	MainWindow.draw(arrowUp);
+	MainWindow.draw(arrowDown);
+	MainWindow.draw(arrowLeft);
+	MainWindow.draw(arrowRight);
+
+	arrowClass.testsong(MainWindow);
+
+	arrowClass.draw(MainWindow, statesdummy);
+
+	arrowClass.Update(MainWindow, deltaTime);
+
+	MainWindow.draw(scoreJudge);
+	MainWindow.draw(Score), Score.setString(std::to_string(ScoreCounter));
+}
 void Drawer::Update(float deltaTime)
 {
 	const float speed = 800.0f;
@@ -124,8 +128,8 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				std::cout << "clickLeft!\n";
 				SetLeftPressed(false);
-				afallingarrows.erase(afallingarrows.begin() + i);
 				arrowRemoved = true;
+				RemoveFirstArrowInMap = true;
 			}
 		}
 		else if (IsDownPressed()) {
@@ -133,8 +137,8 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				std::cout << "clickDown!\n";
 				SetDownPressed(false);
-				afallingarrows.erase(afallingarrows.begin() + i);
 				arrowRemoved = true;
+				RemoveFirstArrowInMap = true;
 			}
 		}
 		else if (IsUpPressed()) {
@@ -142,8 +146,8 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				std::cout << "clickUp!\n";
 				SetUpPressed(false);
-				afallingarrows.erase(afallingarrows.begin() + i);
 				arrowRemoved = true;
+				RemoveFirstArrowInMap = true;
 			}
 		}
 		else if (IsRightPressed()) {
@@ -151,14 +155,19 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			{
 				std::cout << "clickRight!\n";
 				SetRightPressed(false);
-				afallingarrows.erase(afallingarrows.begin() + i);
 				arrowRemoved = true;
+				RemoveFirstArrowInMap = true;
 			}
 		}
 
 		// Only increment the index if no arrow was removed
 		if (!arrowRemoved) {
 			++i;
+		}
+
+		if (RemoveFirstArrowInMap) {
+			arrowClass.RemoveFirstArrowInMap();
+			RemoveFirstArrowInMap = false;
 		}
 	}
 	MainWindow.draw(text);

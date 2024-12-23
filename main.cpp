@@ -12,7 +12,7 @@
 */
 int main()
 {
-	std::cout << "Goodluck :)" << std::endl;
+	std::cout << "Goodluck :)" << std::endl;	
 
 	Drawer drawer;
 	Game game(drawer);

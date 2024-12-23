@@ -123,13 +123,22 @@ void Arrow::testsong(sf::RenderWindow& MainWindow)
 
 }
 
+void Arrow::RemoveFirstArrowInMap()
+{
+	if (!arrows.empty()) {
+		arrows.erase(arrows.begin());
+		std::cout << "Arrow Removed!\n";
+	}
+	else {
+		std::cout << "Map is empty, no arrow to remove.\n";
+	}
+
+}
+
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(timerDebug);
-	for (int i = 0; i < fallingarrows.size(); i++)
-	{
-		target.draw(fallingarrows[i]);
-	}
+
 }
 
 
