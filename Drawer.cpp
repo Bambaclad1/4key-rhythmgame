@@ -68,7 +68,6 @@ void Drawer::SetupText()
 
 void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 {
-
 	MainWindow.draw(arrowUp);
 	MainWindow.draw(arrowDown);
 	MainWindow.draw(arrowLeft);
@@ -135,7 +134,6 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				RemoveFirstArrowInMap = true;
 				afallingarrows.erase(afallingarrows.begin() + i);
 				SetDownPressed(false);
-
 			}
 		}
 		else if (IsUpPressed()) {
@@ -147,7 +145,7 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				SetUpPressed(false);
 			}
 		}
-		else if (IsRightPressed()) {
+		else if (IsRightPressed())
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds())) {
 				std::cout << "clickRight!\n";
 				arrowRemoved = true;
@@ -155,8 +153,14 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 				afallingarrows.erase(afallingarrows.begin() + i);
 				SetRightPressed(false);
 			}
-		}
 
+		if (afallingarrows[i].getPosition().y > 850)
+		{
+			std::cout << "Missed!\n";
+			arrowRemoved = true;
+			RemoveFirstArrowInMap = true;
+			afallingarrows.erase(afallingarrows.begin() + i);
+		}
 		if (!arrowRemoved) {
 			++i;
 		}
