@@ -74,6 +74,7 @@ private:
 	bool DownIsTrue = true;
 	bool UpIsTrue = true;
 	bool RightIsTrue = true;
+	bool MissedArrow = true;
 
 	bool RemoveFirstArrowInMap = false;
 

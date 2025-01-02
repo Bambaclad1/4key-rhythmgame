@@ -6,21 +6,6 @@
 #include "ArrowDirection.h"
 #include <iostream>
 #include <set>
-/*
-					Idea for deploying well managed arrows!
-					---------------------------------------
-	* Make a std::map where we will store the following:
-	* int, float. Int will be explaining which lane we will launch the arrows at.
-	* Example, lane 1, arr left, lane 2, arr up. etc etc
-	* Float will explain the timing, so for example, 0.5f will be the timing the
-	* arrow will fall down. It should be synchronized with the song in SOME way,
-	* so that is why we will use a int called BPM for that. That will be declared in
-	* the Maps class, and not in here, otherwise its a lot.
-	* We should make a algorithm that automatically knows which lane goes where,
-	* by just some calculations in the code and switching if it counts or not.
-	*
-	* Anyway, what more? Hm, probably some movement with deltatime. Thats it!
-	*/
 class Arrow : public sf::Drawable, public sf::Transformable {
 public:
 	Arrow(); 
@@ -34,9 +19,12 @@ public:
 	std::vector<sf::Sprite> GetVectorArrows() {
 		return fallingarrows;
 	}
+	sf::Clock GameTimer;
 
 private:
-	sf::Clock GameTimer;
+	//sf::Time elapsed = GameTimer.restart();
+//	float deltaTimeArrow = elapsed.asSeconds();
+
 	std::map<float, ArrowDirection> arrows;  // int = lane, float = timing, bool is has dropped. 
 	std::map<float, Arrow*> arro0ws;  // int = lane, float = timing
 	std::set<float> spawnedArrows;  
@@ -56,12 +44,14 @@ private:
 	
 	sf::Text timerDebug; // shows the timer of the std::map maps in the game
 	sf::Text PlayingMapInfo; // shows the map info/name
+	sf::Text PrintMap; // shows coordinates ingame
 	sf::Font nerdfont;
 
 	std::vector<sf::Sprite> fallingarrows; // Vector of arrows that are falling
 	sf::Sprite arrowSprite;
 
 	bool DebugRanOnce = true;
+	bool FlagOnce = true;
 
 	sf::RenderWindow test;
 	ArrowDirection direction; 
