@@ -142,18 +142,18 @@ void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 {
 	if (runOnce) {
-		if (!CurrentLoadedSong.openFromFile("resources/music/.wav"))
+		if (!CurrentLoadedSong.openFromFile("resources/music/Megalovania.wav"))
 			std::cout << "Error! Unable to load song! Check resources/music if the file is there!" << std::endl;
 
 		std::cout << "Init Map Data Start" << std::endl;
-		std::string MapName = "AO-Infinity";
-		std::string SongArtist = "Seiryu";
-		std::string MapArtist = "bambaisbanned";
-		std::string MapDifficulty = "Hard";
+		std::string MapName = "Megalovania";
+		std::string SongArtist = "Toby Fox";
+		std::string MapArtist = "Ryan"; // Hier mag je je eigen naam invullen
+		std::string MapDifficulty = "Hard"; // De difficulty van de map die je gaat maken
 		std::string SongInfo = "Song: " + SongArtist + " - " + MapName + "\n" + "Mapper: " + MapArtist + "\n" + "Difficulty: " + MapDifficulty;
-		float secondsPerBeat = 60.0f / bpm;
-		float arrowTravelDistance = 700.0f; // Distance the arrow should travel in pixels
-		float speed = arrowTravelDistance / secondsPerBeat; // arrowTravelDistance is how far an arrow should fall in one beat
+		float secondsPerBeat = 60.0f / bpm; // De BPM is al geregelt, daar hoef je je geen zorgen over te maken
+		float arrowTravelDistance = 700.0f; 
+		float speed = arrowTravelDistance / secondsPerBeat;
 		PlayingMapInfo.setString(SongInfo);
 
 		CurrentLoadedSong.play();
@@ -175,7 +175,6 @@ void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 	arrows.insert({ 4.25f, ArrowDirection::LEFT });
 	arrows.insert({ 4.5f, ArrowDirection::UP });
 	arrows.insert({ 4.75f, ArrowDirection::DOWN });
-	arrows.insert({ 50.75f, ArrowDirection::DOWN }); // temporaily fixes issue #4 on github where the game will crash after the last arrow is spawned
 
 	// Update arrow positions ( move down ) 
 	for (size_t i = 0; i < fallingarrows.size(); i++) {

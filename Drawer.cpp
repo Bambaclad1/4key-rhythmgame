@@ -73,7 +73,8 @@ void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 	MainWindow.draw(arrowLeft);
 	MainWindow.draw(arrowRight);
 
-	arrowClass.testsong(MainWindow, 191, deltaTime); // 120 is the BPM of the song
+	//arrowClass.testsong(MainWindow, 191, deltaTime); // 120 is the BPM of the song
+	arrowClass.ryanmap(MainWindow, 240, deltaTime); // 240 is the BPM of the song. 
 
 	arrowClass.draw(MainWindow, statesdummy);
 
