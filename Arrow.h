@@ -13,6 +13,7 @@ public:
 	void InitSprite();
 	void Update(sf::RenderWindow& MainWindow, float deltaTime);
 	void testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime);
+	void ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime);
 	void RemoveFirstArrowInMap();
 	virtual void draw(sf::RenderTarget& MainWindow, sf::RenderStates states) const;
 

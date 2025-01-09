@@ -96,7 +96,6 @@ void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime)
 
 void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 {
-
 	if (runOnce) {
 		if (!CurrentLoadedSong.openFromFile("resources/music/Seiryu - AO Infinity.wav"))
 			std::cout << "Error! Unable to load song! Check resources/music if the file is there!" << std::endl;
@@ -131,7 +130,53 @@ void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 	arrows.insert({ 4.25f, ArrowDirection::LEFT });
 	arrows.insert({ 4.5f, ArrowDirection::UP });
 	arrows.insert({ 4.75f, ArrowDirection::DOWN });
-	std::cout << "arrow map size " << fallingarrows.size() << std::endl;
+	arrows.insert({ 50.75f, ArrowDirection::DOWN }); // temporaily fixes issue #4 on github where the game will crash after the last arrow is spawned
+
+	// Update arrow positions ( move down ) 
+	for (size_t i = 0; i < fallingarrows.size(); i++) {
+		fallingarrows[i].move(0, speed * deltaTime);
+	}
+
+}
+
+void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
+{
+	if (runOnce) {
+		if (!CurrentLoadedSong.openFromFile("resources/music/.wav"))
+			std::cout << "Error! Unable to load song! Check resources/music if the file is there!" << std::endl;
+
+		std::cout << "Init Map Data Start" << std::endl;
+		std::string MapName = "AO-Infinity";
+		std::string SongArtist = "Seiryu";
+		std::string MapArtist = "bambaisbanned";
+		std::string MapDifficulty = "Hard";
+		std::string SongInfo = "Song: " + SongArtist + " - " + MapName + "\n" + "Mapper: " + MapArtist + "\n" + "Difficulty: " + MapDifficulty;
+		float secondsPerBeat = 60.0f / bpm;
+		float arrowTravelDistance = 700.0f; // Distance the arrow should travel in pixels
+		float speed = arrowTravelDistance / secondsPerBeat; // arrowTravelDistance is how far an arrow should fall in one beat
+		PlayingMapInfo.setString(SongInfo);
+
+		CurrentLoadedSong.play();
+
+		runOnce = false;
+		std::cout << "Map " << SongArtist << " - " << MapName << " Difficulty " << MapDifficulty << " loaded!" << std::endl;
+	}
+	MainWindow.draw(PlayingMapInfo);
+
+	//				timing,                 lane		 revolutionary map editor btw, goodluck
+	arrows.insert({ 0.8f, ArrowDirection::LEFT });
+	arrows.insert({ 1.5f, ArrowDirection::DOWN });
+	arrows.insert({ 2.0f, ArrowDirection::RIGHT });
+	arrows.insert({ 2.5f, ArrowDirection::LEFT });
+	arrows.insert({ 3.0f, ArrowDirection::UP });
+	arrows.insert({ 3.5f, ArrowDirection::UP });
+	arrows.insert({ 3.75f, ArrowDirection::DOWN });
+	arrows.insert({ 4.0f, ArrowDirection::RIGHT });
+	arrows.insert({ 4.25f, ArrowDirection::LEFT });
+	arrows.insert({ 4.5f, ArrowDirection::UP });
+	arrows.insert({ 4.75f, ArrowDirection::DOWN });
+	arrows.insert({ 50.75f, ArrowDirection::DOWN }); // temporaily fixes issue #4 on github where the game will crash after the last arrow is spawned
+
 	// Update arrow positions ( move down ) 
 	for (size_t i = 0; i < fallingarrows.size(); i++) {
 		fallingarrows[i].move(0, speed * deltaTime);
