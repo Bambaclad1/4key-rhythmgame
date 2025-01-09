@@ -114,51 +114,52 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 
 	MainWindow.draw(boundingBox);
 
+
 	for (int i = 0; i < afallingarrows.size();)
 	{
 		bool arrowRemoved = false;
-
+	
 		if (IsLeftPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds())) {
 				std::cout << "clickLeft!\n";
-				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
 				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
 				SetLeftPressed(false);
 			}
 		}
 		else if (IsDownPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds())) {
 				std::cout << "clickDown!\n";
-				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
 				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
 				SetDownPressed(false);
 			}
 		}
 		else if (IsUpPressed()) {
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds())) {
 				std::cout << "clickUp!\n";
-				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
 				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
 				SetUpPressed(false);
 			}
 		}
 		else if (IsRightPressed())
 			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds())) {
 				std::cout << "clickRight!\n";
-				arrowRemoved = true;
 				RemoveFirstArrowInMap = true;
 				afallingarrows.erase(afallingarrows.begin() + i);
+				arrowRemoved = true;
 				SetRightPressed(false);
 			}
 
-		if (afallingarrows[i].getPosition().y > 850)
+		if (i < afallingarrows.size() &&afallingarrows[i].getPosition().y > 800)
 		{
 			std::cout << "Missed!\n";
-			arrowRemoved = true;
 			RemoveFirstArrowInMap = true;
+			arrowRemoved = true;
 			afallingarrows.erase(afallingarrows.begin() + i);
 		}
 		if (!arrowRemoved) {
