@@ -18,8 +18,6 @@ Arrow::Arrow()
 	PrintMap.setFillColor(sf::Color::Black);
 	PrintMap.setCharacterSize(9);
 
-
-
 	std::cout << "Arrow loaded!" << std::endl;
 }
 
@@ -43,7 +41,6 @@ void Arrow::InitSprite() {
 	arrowSprite.setPosition(450, 100);
 	arrowSprite.setTexture(arrowLeftFalling);
 	arrowSprite.setScale(0.5f, 0.5f);
-
 }
 
 void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime)
@@ -93,14 +90,17 @@ void Arrow::Update(sf::RenderWindow& MainWindow, float deltaTime)
 	}
 }
 
-
 void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 {
 	if (runOnce) {
 		if (!CurrentLoadedSong.openFromFile("resources/music/Seiryu - AO Infinity.wav"))
 			std::cout << "Error! Unable to load song! Check resources/music if the file is there!" << std::endl;
-
+		if (!BackgroundText.loadFromFile("resources/backgrounds/aoinfinityseiryu.jpg"))
+			std::cout << "Error! Unable to load Background! Check resources/backgrounds if the file is there!" << std::endl;
 		std::cout << "Init Map Data Start" << std::endl;
+		BackgroundSprite.setTexture(BackgroundText);
+		BackgroundSprite.setScale(0.8, 0.8);
+		BackgroundSprite.setColor(sf::Color(BackgroundDim, BackgroundDim, BackgroundDim));
 		std::string MapName = "AO-Infinity";
 		std::string SongArtist = "Seiryu";
 		std::string MapArtist = "bambaisbanned";
@@ -116,27 +116,34 @@ void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 		runOnce = false;
 		std::cout << "Map " << SongArtist << " - " << MapName << " Difficulty " << MapDifficulty << " loaded!" << std::endl;
 	}
+	MainWindow.draw(BackgroundSprite);
 	MainWindow.draw(PlayingMapInfo);
-	
+
 	//				timing,                 lane		 revolutionary map editor btw, goodluck
+	//                     LEFT|DOWN|UP|RIGHT
+	// the falling arrow takes 1.5 seconds to reach the judgemental portion of the screen
 	arrows.insert({ 0.8f, ArrowDirection::LEFT });
+	arrows.insert({ 0.80001f, ArrowDirection::RIGHT });
 	arrows.insert({ 1.5f, ArrowDirection::DOWN });
 	arrows.insert({ 2.0f, ArrowDirection::RIGHT });
 	arrows.insert({ 2.5f, ArrowDirection::LEFT });
-	arrows.insert({ 3.0f, ArrowDirection::UP });
-	arrows.insert({ 3.5f, ArrowDirection::UP });
-	arrows.insert({ 3.75f, ArrowDirection::DOWN });
-	arrows.insert({ 4.0f, ArrowDirection::RIGHT });
-	arrows.insert({ 4.25f, ArrowDirection::LEFT });
-	arrows.insert({ 4.5f, ArrowDirection::UP });
-	arrows.insert({ 4.75f, ArrowDirection::DOWN });
-	arrows.insert({ 50.75f, ArrowDirection::DOWN }); // temporaily fixes issue #4 on github where the game will crash after the last arrow is spawned
+	arrows.insert({ 3.2f, ArrowDirection::UP });
+	arrows.insert({ 3.20001f, ArrowDirection::LEFT });
+	arrows.insert({ 4.2f, ArrowDirection::RIGHT });
+	arrows.insert({ 4.20001f, ArrowDirection::DOWN });
+	arrows.insert({ 4.60001f, ArrowDirection::DOWN });
+	arrows.insert({ 5.0f, ArrowDirection::LEFT });
+	arrows.insert({ 5.2f, ArrowDirection::DOWN });
+	arrows.insert({ 5.4f, ArrowDirection::UP });
+	arrows.insert({ 5.6f, ArrowDirection::RIGHT });
+	arrows.insert({ 5.8f, ArrowDirection::UP });
+	arrows.insert({ 6.0f, ArrowDirection::DOWN });
 
-	// Update arrow positions ( move down ) 
+
+	// Update arrow positions ( move down )
 	for (size_t i = 0; i < fallingarrows.size(); i++) {
 		fallingarrows[i].move(0, speed * deltaTime);
 	}
-
 }
 
 void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
@@ -152,7 +159,7 @@ void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 		std::string MapDifficulty = "Hard"; // De difficulty van de map die je gaat maken
 		std::string SongInfo = "Song: " + SongArtist + " - " + MapName + "\n" + "Mapper: " + MapArtist + "\n" + "Difficulty: " + MapDifficulty;
 		float secondsPerBeat = 60.0f / bpm; // De BPM is al geregelt, daar hoef je je geen zorgen over te maken
-		float arrowTravelDistance = 700.0f; 
+		float arrowTravelDistance = 700.0f;
 		float speed = arrowTravelDistance / secondsPerBeat;
 		PlayingMapInfo.setString(SongInfo);
 
@@ -175,17 +182,16 @@ void Arrow::ryanmap(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 	arrows.insert({ 4.25f, ArrowDirection::LEFT });
 	arrows.insert({ 4.5f, ArrowDirection::UP });
 	arrows.insert({ 4.75f, ArrowDirection::DOWN });
+	arrows.insert({ 4.750001f, ArrowDirection::LEFT });
 
-	// Update arrow positions ( move down ) 
+	// Update arrow positions ( move down )
 	for (size_t i = 0; i < fallingarrows.size(); i++) {
 		fallingarrows[i].move(0, speed * deltaTime);
 	}
-
 }
 
 void Arrow::RemoveFirstArrowInMap()
 {
-
 	if (!fallingarrows.empty()) {
 		fallingarrows.erase(fallingarrows.begin());
 		std::cout << "Arrow Removed!\n";
@@ -193,7 +199,6 @@ void Arrow::RemoveFirstArrowInMap()
 	else {
 		std::cout << "Map is empty, no arrow to remove.\n";
 	}
-
 }
 
 void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -204,7 +209,6 @@ void Arrow::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		target.draw(fallingarrows[i]);
 	}
 }
-
 
 std::pair<float, ArrowDirection> Arrow::GetNextAction()
 {

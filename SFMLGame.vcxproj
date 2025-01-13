@@ -148,12 +148,14 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Intro.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ScoreSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Intro.h" />
+    <ClInclude Include="ScoreSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

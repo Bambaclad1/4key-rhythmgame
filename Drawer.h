@@ -13,6 +13,7 @@ public:
 	Drawer();
 
 	Arrow arrowClass;
+	
 
 	void SetupTextures();
 	void SetupText();

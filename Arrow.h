@@ -50,6 +50,10 @@ private:
 
 	std::vector<sf::Sprite> fallingarrows; // Vector of arrows that are falling
 	sf::Sprite arrowSprite;
+	sf::Sprite BackgroundSprite;
+	sf::Texture BackgroundText;
+
+	int BackgroundDim = 155;
 
 	bool DebugRanOnce = true;
 	bool FlagOnce = true;

@@ -11,12 +11,11 @@
 
 				holiday break update
 
-				fix late deltatime after starting game cause clock inits somewhere else in the main earlier when its supposed to be.
+				add score system
+				dunno what else, glgl
 */
 int main()
 {
-	std::cout << "Goodluck :)" << std::endl;
-
 	Drawer drawer;
 	Game game(drawer);
 	Intro intro;
