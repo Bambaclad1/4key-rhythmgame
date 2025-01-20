@@ -69,7 +69,7 @@ void Drawer::SetupText()
 void Drawer::Draw(sf::RenderWindow& MainWindow, float deltaTime)
 {
 	arrowClass.testsong(MainWindow, 191, deltaTime); // 120 is the BPM of the song
-	//arrowClass.ryanmap(MainWindow, 240, deltaTime); // 240 is the BPM of the song. 
+	//arrowClass.ryanmap(MainWindow, 240, deltaTime); // 240 is the BPM of the song.
 
 	MainWindow.draw(arrowUp);
 	MainWindow.draw(arrowDown);
@@ -115,48 +115,43 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 
 	MainWindow.draw(boundingBox);
 
-
 	for (int i = 0; i < afallingarrows.size();)
 	{
 		bool arrowRemoved = false;
-	
-		if (IsLeftPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds())) {
-				std::cout << "clickLeft!\n";
-				RemoveFirstArrowInMap = true;
-				afallingarrows.erase(afallingarrows.begin() + i);
-				arrowRemoved = true;
-				SetLeftPressed(false);
-			}
-		}
-		else if (IsDownPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds())) {
-				std::cout << "clickDown!\n";
-				RemoveFirstArrowInMap = true;
-				afallingarrows.erase(afallingarrows.begin() + i);
-				arrowRemoved = true;
-				SetDownPressed(false);
-			}
-		}
-		else if (IsUpPressed()) {
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds())) {
-				std::cout << "clickUp!\n";
-				RemoveFirstArrowInMap = true;
-				afallingarrows.erase(afallingarrows.begin() + i);
-				arrowRemoved = true;
-				SetUpPressed(false);
-			}
-		}
-		else if (IsRightPressed())
-			if (afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds())) {
-				std::cout << "clickRight!\n";
-				RemoveFirstArrowInMap = true;
-				afallingarrows.erase(afallingarrows.begin() + i);
-				arrowRemoved = true;
-				SetRightPressed(false);
-			}
 
-		if (i < afallingarrows.size() &&afallingarrows[i].getPosition().y > 800)
+		if (IsLeftPressed() && afallingarrows[i].getPosition().y > 700 && afallingarrows[i].getGlobalBounds().intersects(arrowLeft.getGlobalBounds()))
+		{
+			std::cout << "clickLeft!\n";
+			RemoveFirstArrowInMap = true;
+			afallingarrows.erase(afallingarrows.begin() + i);
+			arrowRemoved = true;
+			SetLeftPressed(false);
+		}
+		else if (IsDownPressed() && afallingarrows[i].getPosition().y > 700 && afallingarrows[i].getGlobalBounds().intersects(arrowDown.getGlobalBounds()))
+		{
+			std::cout << "clickDown!\n";
+			RemoveFirstArrowInMap = true;
+			afallingarrows.erase(afallingarrows.begin() + i);
+			arrowRemoved = true;
+			SetDownPressed(false);
+		}
+		else if (IsUpPressed() && afallingarrows[i].getPosition().y > 700 && afallingarrows[i].getGlobalBounds().intersects(arrowUp.getGlobalBounds())) {
+			std::cout << "clickUp!\n";
+			RemoveFirstArrowInMap = true;
+			afallingarrows.erase(afallingarrows.begin() + i);
+			arrowRemoved = true;
+			SetUpPressed(false);
+		}
+		else if (IsRightPressed() && afallingarrows[i].getPosition().y > 700 && afallingarrows[i].getGlobalBounds().intersects(arrowRight.getGlobalBounds()))
+		{
+			std::cout << "clickRight!\n";
+			RemoveFirstArrowInMap = true;
+			afallingarrows.erase(afallingarrows.begin() + i);
+			arrowRemoved = true;
+			SetRightPressed(false);
+		}
+
+		if (i < afallingarrows.size() && afallingarrows[i].getPosition().y > 800)
 		{
 			std::cout << "Missed!\n";
 			RemoveFirstArrowInMap = true;
@@ -171,40 +166,40 @@ void Drawer::BoundingBox(sf::RenderWindow& MainWindow)
 			arrowClass.RemoveFirstArrowInMap();
 			RemoveFirstArrowInMap = false;
 		}
+		MainWindow.draw(text);
 	}
-	MainWindow.draw(text);
 }
 
-void Drawer::ChangeTexture(int lane)
-{
-	if (lane == 1) {
-		arrowLeft.setTexture(arrowLeftKDText);
-	}
-	else if (lane == 2) {
-		arrowDown.setTexture(arrowDownKDText);
-	}
-	else if (lane == 3) {
-		arrowUp.setTexture(arrowUpKDText);
-	}
-	else if (lane == 4) {
-		arrowRight.setTexture(arrowRightKDText);
-	}
-}
-void Drawer::ResetTexture(int lane)
-{
-	switch (lane)
+	void Drawer::ChangeTexture(int lane)
 	{
-	case 1:
-		arrowLeft.setTexture(arrowLeftText);
-		break;
-	case 2:
-		arrowDown.setTexture(arrowDownText);
-		break;
-	case 3:
-		arrowUp.setTexture(arrowUpText);
-		break;
-	case 4:
-		arrowRight.setTexture(arrowRightText);
-		break;
+		if (lane == 1) {
+			arrowLeft.setTexture(arrowLeftKDText);
+		}
+		else if (lane == 2) {
+			arrowDown.setTexture(arrowDownKDText);
+		}
+		else if (lane == 3) {
+			arrowUp.setTexture(arrowUpKDText);
+		}
+		else if (lane == 4) {
+			arrowRight.setTexture(arrowRightKDText);
+		}
 	}
-}
+	void Drawer::ResetTexture(int lane)
+	{
+		switch (lane)
+		{
+		case 1:
+			arrowLeft.setTexture(arrowLeftText);
+			break;
+		case 2:
+			arrowDown.setTexture(arrowDownText);
+			break;
+		case 3:
+			arrowUp.setTexture(arrowUpText);
+			break;
+		case 4:
+			arrowRight.setTexture(arrowRightText);
+			break;
+		}
+	}

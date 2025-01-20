@@ -138,7 +138,10 @@ void Arrow::testsong(sf::RenderWindow& MainWindow, float bpm, float deltaTime)
 	arrows.insert({ 5.6f, ArrowDirection::RIGHT });
 	arrows.insert({ 5.8f, ArrowDirection::UP });
 	arrows.insert({ 6.0f, ArrowDirection::DOWN });
-
+	arrows.insert({ 6.5f, ArrowDirection::LEFT });
+	arrows.insert({ 6.500001f, ArrowDirection::UP });
+	arrows.insert({ 6.9f, ArrowDirection::RIGHT });
+	arrows.insert({ 6.900001f, ArrowDirection::DOWN });
 
 	// Update arrow positions ( move down )
 	for (size_t i = 0; i < fallingarrows.size(); i++) {

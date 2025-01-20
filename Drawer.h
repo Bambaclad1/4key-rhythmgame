@@ -4,16 +4,17 @@
 #include <SFML/Audio.hpp>
 #include <map>
 #include "Arrow.h"
+#include "ScoreSystem.h"
 #include <iostream>
 #include <vector>
-
+class ScoreSystem;
 class Drawer
 {
 public:
 	Drawer();
 
 	Arrow arrowClass;
-	
+	ScoreSystem* score;
 
 	void SetupTextures();
 	void SetupText();
